@@ -87,14 +87,12 @@ Children:
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-            '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23',
-            '24', '25', '26', '27', '28', '29', '30', '31']
+          choices: *id001
           default: '2'
           name: CAN ID
-          validators: [CANID]
-          value: '0'
-      Base: Talon SRX
+          validators: *id002
+          value: '9'
+      Base: Talon FX
       Name: TurretMotor
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -216,7 +214,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: TurretCommand
+    Name: TurretTurn
   Properties: {}
   Base: Commands
   Name: Commands
