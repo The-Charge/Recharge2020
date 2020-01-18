@@ -64,10 +64,10 @@ leftJoystick = new Joystick(1);
 
 rightJoystick = new Joystick(0);
 
-shiftLowBtn = new JoystickButton(rightJoystick, 1);
-shiftLowBtn.whileHeld(new ShiftLow());
-shiftHighBtn = new JoystickButton(rightJoystick, 2);
-shiftHighBtn.whileHeld(new ShiftHigh());
+shiftLowBtn = new JoystickButton(rightJoystick, 2);
+shiftLowBtn.whenPressed(new ShiftLow());
+shiftHighBtn = new JoystickButton(rightJoystick, 1);
+shiftHighBtn.whenPressed(new ShiftHigh());
 
 
         // SmartDashboard Buttons
