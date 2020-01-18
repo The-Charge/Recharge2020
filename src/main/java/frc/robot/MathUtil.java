@@ -1,5 +1,4 @@
 package frc.robot;
-//package org.usfirst.frc2619.Recharge2020;  //This was the declaration from last year
 
 //import org.usfirst.frc2619.Plybot2020.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
