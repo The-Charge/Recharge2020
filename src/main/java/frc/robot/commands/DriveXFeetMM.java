@@ -8,8 +8,8 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package frc.robot.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -50,6 +50,8 @@ public class DriveXFeetMM extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        Robot.drivetrain.ResestEncoder();
+
         if (m_velocity == 0)
     		Robot.drivetrain.MotionMagicInit(m_distance);
     	else

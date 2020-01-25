@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
+
 package frc.robot.subsystems;
 
 import frc.robot.MathUtil;
@@ -52,17 +53,17 @@ public class Drivetrain extends Subsystem {
     private WPI_TalonSRX leftMidMotor;
     private WPI_TalonSRX leftBackMotor;
 
-    //PID Constants
+    //PID Constants (all values still need to be changed, these are values for plybot)
     private static final int SPEED_P_CONSTANT = 0;
     private static final int SPEED_I_CONSTANT = 0; 
     private static final int SPEED_D_CONSTANT = 0;
     private static final int SPEED_F_CONSTANT = 0;
 
     private static final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SECOND = 0;  //Still have to change (depends on wheels)
-    private static final int TICKS_PER_FOOT = 0;    //Still have to change
+    private static final int MAX_TICKS_PER_SECOND = 9000;  
+    private static final int TICKS_PER_FOOT = 5270;    
 
-    //Motion Magic (all values still need to be changed)
+    //Motion Magic (all values still need to be changed, these are values for plybot)
     public double MotionMagicP = 0;
     public double MotionMagicI = 0;
     public double MotionMagicD = 0;
@@ -103,6 +104,8 @@ public class Drivetrain extends Subsystem {
     leftFrontMotor.setInverted(true);
     leftMidMotor.setInverted(true);
     leftBackMotor.setInverted(true);
+
+    rightFrontMotor.setSensorPhase(true);    //inverts right encoder on Talon SRX
 
     leftMidMotor.follow(leftFrontMotor);
     leftBackMotor.follow(leftFrontMotor);
@@ -209,9 +212,10 @@ public class Drivetrain extends Subsystem {
     	
     	rightFrontMotor.configMotionAcceleration((int)(correctionR*MotionMagicAcceleration), TIMEOUT_MS);
     	rightFrontMotor.configMotionCruiseVelocity((int)(correctionR*MotionMagicVelocity), TIMEOUT_MS);
-    	
-    	leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
-    	rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+        
+        //Do we need to reset encoders here?
+    	//leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+    	//rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
     	
     	MotionMagicDistance *= TICKS_PER_FOOT;
     	leftFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
@@ -241,9 +245,10 @@ public class Drivetrain extends Subsystem {
     	
     	rightFrontMotor.configMotionAcceleration((int)(correctionR*backAcceleration), TIMEOUT_MS);
     	rightFrontMotor.configMotionCruiseVelocity((int)(correctionR*backVelocity), TIMEOUT_MS);
-    	
-    	leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
-    	rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+        
+        //Do we need to reset encoders here?
+    	//leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+    	//rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
     	
     	MotionMagicDistance *= TICKS_PER_FOOT;
     	leftFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
@@ -252,7 +257,12 @@ public class Drivetrain extends Subsystem {
 
     public boolean isAtPIDDestination() {
 		return (Math.abs(this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500) || (Math.abs(this.rightFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500);
-	}
+    }
+    
+    public void ResestEncoder()
+    {
+        leftFrontMotor.setSelectedSensorPosition(0, 0, TIMEOUT_MS);
+    	rightFrontMotor.setSelectedSensorPosition(0, 0, TIMEOUT_MS);
+    }
 
 }
-
