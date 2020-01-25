@@ -91,7 +91,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '10'
+          value: '7'
       Base: Talon FX
       Name: IntakeMotor
     Properties:
@@ -241,14 +241,14 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id005
+        default: []
+        name: Parameter presets
+        validators: null
+        value:
         - !!robotbuilder.data.properties.ParameterSet
           name: default
           parameters:
           - {name: speed, type: double, value: '0.4'}
-        name: Parameter presets
-        validators: null
-        value: *id005
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
