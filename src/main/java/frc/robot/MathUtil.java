@@ -1,6 +1,9 @@
 package frc.robot;
 //package org.usfirst.frc2619.Recharge2020;  //This was the declaration from last year
 
+import java.util.ArrayList;
+
+import edu.wpi.first.wpilibj.geometry.Pose2d;
 //import org.usfirst.frc2619.Plybot2020.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -61,5 +64,11 @@ public class MathUtil {
 	//Maps a ranged value between 0 and 1
 	public static double lerp(double input, double max, double min){
 		return (input-min)/(max-min);
+	}
+
+	public void generateTrajectory(Pose2d startPos, Pose2d endPos, ArrayList<Integer> waypoints) {
+
+		
+
 	}
 }
