@@ -45,7 +45,7 @@ private WPI_TalonSRX rightMotorShooter;
 
   
     private final static double SPEED_P_CONSTANT = 0.1;
-	private final static double SPEED_I_CONSTANT = 0.00001;
+	private final static double SPEED_I_CONSTANT = 0.0001;
 	private final static double SPEED_D_CONSTANT = 0.0;
 	private final static double SPEED_F_CONSTANT = 0.0;
     
@@ -55,22 +55,18 @@ private WPI_TalonSRX rightMotorShooter;
     public double speedF = SPEED_F_CONSTANT;
 
     
-    public final static int PID_SLOT_SPEED_MODE = 0;
+    public final static int PID_SLOT_SPEED_MODE = 1;
     
-    public double SHOOTER_INWARD_MULTIPLIER = 0;
-    public double SHOOTER_OUTWARD_MULTIPLIER = 0;
+    public double SHOOTER_INWARD_MULTIPLIER = 1;
+    public double SHOOTER_OUTWARD_MULTIPLIER = 1;
 
     private final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SEC = 0;
-//need to figure out the max ticks so I just set it to 0 for now^^
+    private static final int MAX_TICKS_PER_SEC = 9000;
+
     public Shooter() {
 
     leftMotorShooter = new WPI_TalonSRX(7);       
     rightMotorShooter = new WPI_TalonSRX(8);
-
-
-        
-
     //leftMotorShooter = new WPI_TalonFX(7);
     //rightMotorShooter = new WPI_TalonFX(8);
 
@@ -110,7 +106,7 @@ private WPI_TalonSRX rightMotorShooter;
 
     public void run(double pow) {    	
         leftMotorShooter.set(pow);
-        rightMotorShooter.set(pow);
+        rightMotorShooter.follow(leftMotorShooter);
      
     }
 
@@ -124,27 +120,17 @@ private WPI_TalonSRX rightMotorShooter;
 
         leftMotorShooter.selectProfileSlot(PID_SLOT_SPEED_MODE, 0);
         
-        rightMotorShooter.set(ControlMode.Velocity, 0);
-        
-        rightMotorShooter.config_kP(PID_SLOT_SPEED_MODE, speedP, TIMEOUT_MS);
-    	rightMotorShooter.config_kI(PID_SLOT_SPEED_MODE, speedI, TIMEOUT_MS);
-    	rightMotorShooter.config_kD(PID_SLOT_SPEED_MODE, speedD, TIMEOUT_MS);
-    	rightMotorShooter.config_kF(PID_SLOT_SPEED_MODE, speedF, TIMEOUT_MS);
-
-    	rightMotorShooter.selectProfileSlot(PID_SLOT_SPEED_MODE, 0);
     }
 
     public void setPercentSpeedPID(double setSpeed) {
         leftMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
-        rightMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
+        rightMotorShooter.follow(leftMotorShooter);
     }
     
     public int getTicksPerSecondLeft(){
         return leftMotorShooter.getSelectedSensorVelocity();
     }
 
-    public int getTicksPerSecondRight(){
-        return rightMotorShooter.getSelectedSensorVelocity();
-    }
+    
 }
 

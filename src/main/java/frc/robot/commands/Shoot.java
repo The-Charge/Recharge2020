@@ -38,15 +38,15 @@ public class Shoot extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        //Robot.shooter.initSpeedMode();
+        Robot.shooter.initSpeedMode();
+        //Robot.shooter.setPercentSpeedPID(m_speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        
-        //Robot.shooter.setPercentSpeedPID(m_speed);
-        Robot.shooter.run(m_speed);
+        double YAxisVal = Robot.oi.buttonBox.getRawAxis(1);
+        Robot.shooter.setPercentSpeedPID(YAxisVal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
