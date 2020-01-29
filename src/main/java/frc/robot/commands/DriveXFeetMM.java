@@ -52,10 +52,10 @@ public class DriveXFeetMM extends Command {
     protected void initialize() {
         Robot.drivetrain.ResestEncoder();
 
-        if (m_velocity == 0)
+        //if (m_velocity == 0)
     		Robot.drivetrain.MotionMagicInit(m_distance);
-    	else
-    		Robot.drivetrain.MotionMagicInit(m_distance, m_velocity, m_acceleration);
+    	//else  -- not necessary but may be used later during the season
+    	//	Robot.drivetrain.MotionMagicInit(m_distance, m_velocity, m_acceleration);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -72,7 +72,6 @@ public class DriveXFeetMM extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.drivetrain.setPercentVBus();
         Robot.drivetrain.stop();
     }
 
