@@ -8,16 +8,20 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package frc.robot;
 
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
+
+import java.util.Map;
+
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
@@ -60,6 +64,12 @@ shooter = new Shooter();
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
+        //Shuffleboard.getTab("LiveWindow").add("Shooter Speed",0).withProperties(Map.of("min",-1,"max",1)).withWidget(BuiltInWidgets.kNumberSlider).getEntry();
+        Shuffleboard.getTab("LiveWindow").add("Shooter Speed1",0).withWidget(BuiltInWidgets.kSpeedController).getEntry();
+        Shuffleboard.enableActuatorWidgets();
+        //theoretically, this creates a new Speed Controller and enables it,
+        //have yet to figure out if there are other steps to be taken to connect to specific motors
+    
         oi = new OI();
 
         HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
