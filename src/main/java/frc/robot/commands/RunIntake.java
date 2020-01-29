@@ -41,7 +41,7 @@ public class RunIntake extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.intake.setPercentVBus();
+        Robot.intake.initSpeedMode();
     }
     
 
@@ -49,8 +49,8 @@ public class RunIntake extends Command {
     @Override
     protected void execute() {
         double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
-        Robot.intake.run(xAxisVal);
-        SmartDashboard.putNumber("X-Axis Value:" , xAxisVal);
+        Robot.intake.setPercentSpeedPID(xAxisVal);
+       // SmartDashboard.putNumber("X-Axis Value:" , xAxisVal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -63,7 +63,7 @@ public class RunIntake extends Command {
     @Override
     protected void end() {
         Robot.intake.stop();
-        Robot.intake.setPercentVBus();
+       // Robot.intake.setPercentVBus();
     }
 
     // Called when another command which requires one or more of the same
