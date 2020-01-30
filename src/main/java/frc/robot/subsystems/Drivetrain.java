@@ -66,7 +66,7 @@ private WPI_TalonFX leftBackMotor;
     public double MotionMagicP = .0002;
     public double MotionMagicI = 0.0;
     public double MotionMagicD = 0;
-    public double MotionMagicF = 0.5;
+    public double MotionMagicF = 0.25;
     public int MotionMagicAcceleration = 2500;
     public int MotionMagicVelocity = 5000;
     public int MotionMagicPIDIndex = 0;
@@ -206,7 +206,6 @@ leftBackMotor = new WPI_TalonSRX(6);
     public void MotionMagicInit(double distance) {
     	//rightFrontMotor.follow(leftFrontMotor);
     	
-    	MotionMagicDistance = distance;
     	leftFrontMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, MotionMagicPIDIndex, TIMEOUT_MS);
     	rightFrontMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, MotionMagicPIDIndex, TIMEOUT_MS);
     	
@@ -229,11 +228,10 @@ leftBackMotor = new WPI_TalonSRX(6);
     	rightFrontMotor.configMotionAcceleration((int)(correctionR*MotionMagicAcceleration), TIMEOUT_MS);
     	rightFrontMotor.configMotionCruiseVelocity((int)(correctionR*MotionMagicVelocity), TIMEOUT_MS);
         
-        //Do we need to reset encoders here?
-    	//leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
-    	//rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+    	leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
+    	rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
     	
-    	MotionMagicDistance *= TICKS_PER_FOOT;
+    	MotionMagicDistance = distance * TICKS_PER_FOOT;
         leftFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
         rightFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
 
@@ -241,8 +239,9 @@ leftBackMotor = new WPI_TalonSRX(6);
     }
 
     public boolean isAtPIDDestination() {
-		return (Math.abs(this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500) || (Math.abs(this.rightFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500);
-    }
+		return (Math.abs(this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500) || (Math.abs(this.rightFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500);// || this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) < -MotionMagicDistance + 6000)
+	}
+
     
     public void ResestEncoder()
     {

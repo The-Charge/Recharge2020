@@ -50,7 +50,7 @@ public class DriveXFeetMM extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.drivetrain.ResestEncoder();
+       // Robot.drivetrain.ResestEncoder();
 
         //if (m_velocity == 0)
     		Robot.drivetrain.MotionMagicInit(m_distance);
