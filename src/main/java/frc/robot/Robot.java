@@ -117,5 +117,11 @@ shooter = new Shooter();
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        SmartDashboard.putNumber("Gyro Position:", Robot.drivetrain.getGyroYaw());
+        SmartDashboard.putNumber("Current Motor Output:", Robot.drivetrain.pidController.calculate(Robot.drivetrain.getGyroYaw()));
+        SmartDashboard.putNumber("Current Turn Error:", Robot.drivetrain.pidController.getPositionError());
+        SmartDashboard.putNumber("Current Setpoint:", Robot.drivetrain.pidController.getSetpoint());
+        SmartDashboard.putData("TurnNDegrees:", new TurnNDegreesRelative(SmartDashboard.getNumber("Degrees:", 0)));
     }
 }
