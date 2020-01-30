@@ -124,7 +124,7 @@ public class ColorSensor extends Subsystem {
 
     }
 
-    public Color getColor(){
+    public Color getColor(){ //parameter String colors
       return m_colorSensor.getColor();
     }
   
