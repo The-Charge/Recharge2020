@@ -11,11 +11,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.commands.*;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDSource;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -89,12 +85,12 @@ turretMotor = new WPI_TalonSRX(9);
         // other teams used a rate limiter to stabilize the setpoint
     }
 
-    private double getAngle() {
-        return turretMotor.getSelectedSensorPosition() * DEGREES_PER_TICK;
-    }
-
     private void stop() {
         turretMotor.set(ControlMode.PercentOutput, 0);
+    }
+
+    private double getAngle() {
+        return turretMotor.getSelectedSensorPosition() * DEGREES_PER_TICK;
     }
 
     public boolean atAngle(double angle) {

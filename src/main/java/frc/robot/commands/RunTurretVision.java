@@ -18,7 +18,8 @@ import frc.robot.Robot;
  *
  */
 public class RunTurretVision extends Command {
-    private static final double ALIGNMENT_RANGE = 3;
+    private static final double ALIGNMENT_RANGE_INNER = 3;
+    private static final double ALIGNMENT_RANGE_OUTER = 10;
 
     private double[] visionResults;
     private double horizontalAngle;
@@ -63,7 +64,7 @@ public class RunTurretVision extends Command {
         //  7. instantaneous FPS
         visionResults = SmartDashboard.getNumberArray("Vision/result", new double[] {0, 0});
         if (visionResults[1] == 0) {
-            SmartDashboard.putBoolean("Vision/valid_shot", false);
+            SmartDashboard.putString("Vision/valid_shot", "none");
             return;
         }
 
@@ -72,10 +73,18 @@ public class RunTurretVision extends Command {
         verticalAngle = visionResults[4];
         alignmentAngle = visionResults[5];
 
-        if (Robot.turret.atAngle(horizontalAngle) && (Math.abs(alignmentAngle) < ALIGNMENT_RANGE)) {
-            SmartDashboard.putBoolean("Vision/valid_shot", true);
+        Robot.turret.setAngleRelative(horizontalAngle);
+
+        if (Robot.turret.atAngle(horizontalAngle)) {
+            if (alignmentAngle < ALIGNMENT_RANGE_INNER) {
+                SmartDashboard.putString("Vision/valid_shot", "inner");
+            } else if (alignmentAngle < ALIGNMENT_RANGE_OUTER) {
+                SmartDashboard.putString("Vision/valid_shot", "outer");
+            } else {
+                SmartDashboard.putString("Vision/valid_shot", "locked but none");
+            }
         } else {
-            SmartDashboard.putBoolean("Vision/valid_shot", false);
+            SmartDashboard.putString("Vision/valid_shot", "homing but none");
         }
     }
 
