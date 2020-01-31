@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -135,6 +136,7 @@ private WPI_TalonSRX rightMotorShooter;
     }
 
     public void setPercentSpeedPID(double setSpeed) {
+        SmartDashboard.putNumber("PID Val", setSpeed);
         leftMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
         rightMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
     }

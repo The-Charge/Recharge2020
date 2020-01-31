@@ -119,5 +119,6 @@ indexer = new Indexer();
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        //SmartDashboard.putData(Indexer.getInstance);
     }
 }

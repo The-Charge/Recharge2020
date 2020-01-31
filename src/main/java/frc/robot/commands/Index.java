@@ -11,6 +11,7 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -46,7 +47,7 @@ public class Index extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
+        double xAxisVal = Robot.oi.rightJoystick.getRawAxis(0);
         Robot.indexer.setPercentSpeedPID(xAxisVal);
     }
 
@@ -60,6 +61,7 @@ public class Index extends Command {
     @Override
     protected void end() {
         Robot.indexer.stop();
+       // Robot.indexer.setPercentVBus();
     }
 
     // Called when another command which requires one or more of the same
