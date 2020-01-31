@@ -53,8 +53,8 @@ private WPI_TalonFX leftBackMotor;
     private WPI_TalonSRX leftBackMotor;
 
     //PID Constants (all values still need to be changed, these are values for plybot)
-    private static final double SPEED_P_CONSTANT = 0.3;
-    private static final double SPEED_I_CONSTANT = 0.001; 
+    private static final double SPEED_P_CONSTANT = 0.25;
+    private static final double SPEED_I_CONSTANT = 0.0001;   //lowered
     private static final double SPEED_D_CONSTANT = 0.0;
     private static final double SPEED_F_CONSTANT = 0.12;
 
@@ -63,16 +63,16 @@ private WPI_TalonFX leftBackMotor;
     private static final int TICKS_PER_FOOT = 5270;    
 
     //Motion Magic (all values still need to be changed, these are values for plybot)
-    public double MotionMagicP = .0002;
+    public double MotionMagicP = 1; //gain tuned...
     public double MotionMagicI = 0.0;
-    public double MotionMagicD = 0;
-    public double MotionMagicF = 0.25;
-    public int MotionMagicAcceleration = 2500;
+    public double MotionMagicD = 0.001;
+    public double MotionMagicF = 0.65;
+    public int MotionMagicAcceleration = 2500;  //Tune between 2500-5000
     public int MotionMagicVelocity = 5000;
     public int MotionMagicPIDIndex = 0;
     public int MotionMagicPIDSlot = 0;
     public double MotionMagicDistance;
-    public double correctionR = 1.02;
+    //public double correctionR = 1.02;
 
 
 
@@ -208,7 +208,21 @@ leftBackMotor = new WPI_TalonSRX(6);
     	
     	leftFrontMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, MotionMagicPIDIndex, TIMEOUT_MS);
     	rightFrontMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, MotionMagicPIDIndex, TIMEOUT_MS);
-    	
+        
+
+        //Setting min and max outputs (new code)
+        leftFrontMotor.configNominalOutputForward(0, TIMEOUT_MS);
+        leftFrontMotor.configNominalOutputReverse(0, TIMEOUT_MS);
+        leftFrontMotor.configPeakOutputForward(1, TIMEOUT_MS);
+        leftFrontMotor.configPeakOutputReverse(-1, TIMEOUT_MS);
+
+        rightFrontMotor.configNominalOutputForward(0, TIMEOUT_MS);
+        rightFrontMotor.configNominalOutputReverse(0, TIMEOUT_MS);
+        rightFrontMotor.configPeakOutputForward(1, TIMEOUT_MS);
+        rightFrontMotor.configPeakOutputReverse(-1, TIMEOUT_MS);
+
+
+
     	leftFrontMotor.selectProfileSlot(MotionMagicPIDSlot, MotionMagicPIDIndex);
     	rightFrontMotor.selectProfileSlot(MotionMagicPIDSlot, MotionMagicPIDIndex);
     	
@@ -223,10 +237,11 @@ leftBackMotor = new WPI_TalonSRX(6);
     	rightFrontMotor.config_kF(0, MotionMagicF, TIMEOUT_MS);
     	
     	leftFrontMotor.configMotionAcceleration(MotionMagicAcceleration, TIMEOUT_MS);
-    	leftFrontMotor.configMotionCruiseVelocity(MotionMagicVelocity, TIMEOUT_MS);
-    	
-    	rightFrontMotor.configMotionAcceleration((int)(correctionR*MotionMagicAcceleration), TIMEOUT_MS);
-    	rightFrontMotor.configMotionCruiseVelocity((int)(correctionR*MotionMagicVelocity), TIMEOUT_MS);
+        leftFrontMotor.configMotionCruiseVelocity(MotionMagicVelocity, TIMEOUT_MS);
+        
+    	//rightFrontMotor.configMotionAcceleration((int)(correctionR*MotionMagicAcceleration), TIMEOUT_MS);
+    	rightFrontMotor.configMotionAcceleration(MotionMagicAcceleration, TIMEOUT_MS);
+    	rightFrontMotor.configMotionCruiseVelocity(MotionMagicVelocity, TIMEOUT_MS);
         
     	leftFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
     	rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
