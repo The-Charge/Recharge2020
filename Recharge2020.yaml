@@ -86,6 +86,7 @@ Children:
   - Children:
     - Children: []
       Properties:
+<<<<<<< HEAD
         Output Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
@@ -169,6 +170,16 @@ Children:
           value: '9'
       Base: Talon SRX
       Name: turretMotor
+=======
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '7'
+      Base: Talon FX
+      Name: IntakeMotor
+>>>>>>> PIDIntake
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -185,7 +196,11 @@ Children:
         validators: null
         value: []
     Base: Subsystem
+<<<<<<< HEAD
     Name: Turret
+=======
+    Name: Intake
+>>>>>>> PIDIntake
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -269,7 +284,11 @@ Children:
         validators: *id009
         value: '1'
     Base: Joystick
+<<<<<<< HEAD
     Name: LeftJoystick
+=======
+    Name: leftJoystick
+>>>>>>> PIDIntake
   - Children:
     - Children: []
       Properties:
@@ -283,7 +302,13 @@ Children:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed,
             type: double, value: '0'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
+<<<<<<< HEAD
           choices: *id005
+=======
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+            '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24',
+            '25', '26', '27', '28', '29', '30', '31', '32']
+>>>>>>> PIDIntake
           default: '1'
           name: Button
           validators: null
@@ -292,15 +317,23 @@ Children:
           default: None
           name: Command
           type: Command
+<<<<<<< HEAD
           validators: *id006
           value: Shoot
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id007
+=======
+          validators: [TypeDropdownSelected]
+          value: RunIntake
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: [whileHeld, whenPressed, whenReleased]
+>>>>>>> PIDIntake
           default: whileHeld
           name: When to Run
           validators: null
           value: whileHeld
       Base: Joystick Button
+<<<<<<< HEAD
       Name: ShootBtn
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
@@ -308,6 +341,15 @@ Children:
         default: 1
         name: Number
         validators: *id009
+=======
+      Name: IntakeBtn
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: *id003
+        default: 1
+        name: Number
+        validators: *id004
+>>>>>>> PIDIntake
         value: '2'
     Base: Joystick
     Name: ButtonBox
@@ -367,6 +409,7 @@ Children:
         default: []
         name: Parameters
         validators: null
+<<<<<<< HEAD
         value: []
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
@@ -411,12 +454,18 @@ Children:
         default: []
         name: Parameters
         validators: null
+=======
+>>>>>>> PIDIntake
         value:
         - !!robotbuilder.data.properties.ParameterDescriptor {name: speed, type: double}
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+<<<<<<< HEAD
         name: Requires, type: Subsystem, validators: null, value: Shooter}
+=======
+        name: Requires, type: Subsystem, validators: null, value: None}
+>>>>>>> PIDIntake
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets
@@ -429,6 +478,7 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
+<<<<<<< HEAD
     Name: Shoot
   - Children: []
     Properties:
@@ -474,6 +524,9 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: TurretTurn
+=======
+    Name: RunIntake
+>>>>>>> PIDIntake
   Properties: {}
   Base: Commands
   Name: Commands
@@ -495,10 +548,19 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
+<<<<<<< HEAD
   Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\XiaoHua\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\Users\ashwi'}
   Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\XiaoHua\FRCProjects',
     extension: null, folder: true, name: Export Directory, validators: null, value: 'C:\workspace'}
+=======
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Programmer
+      5\', extension: null, folder: true, name: Wiring file location, validators: null,
+    value: 'C:\Users\ashwi'}
+  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Programmer
+      5\FRCProjects', extension: null, folder: true, name: Export Directory, validators: null,
+    value: 'C:\workspace'}
+>>>>>>> PIDIntake
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
