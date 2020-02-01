@@ -50,7 +50,7 @@ public class RunIntake extends Command {
     protected void execute() {
         double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
         Robot.intake.setPercentSpeedPID(xAxisVal);
-       // SmartDashboard.putNumber("X-Axis Value:" , xAxisVal);
+        SmartDashboard.putNumber("X-Axis Value:" , xAxisVal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
