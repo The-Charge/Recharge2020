@@ -297,17 +297,26 @@ Children:
         validators: *id009
         value: '1'
     Base: Joystick
+<<<<<<< HEAD
     Name: LeftJoystick
+=======
+    Name: leftJoystick
+>>>>>>> origin/TankDrive
   - Children:
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+<<<<<<< HEAD
           name: Joystick, validators: null, value: ButtonBox}
+=======
+          name: Joystick, validators: null, value: buttonBox}
+>>>>>>> origin/TankDrive
         Parameters: !!robotbuilder.data.properties.ParametersProperty
           default: []
           name: Parameters
           validators: null
           value:
+<<<<<<< HEAD
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed,
             type: double, value: '0'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
@@ -316,10 +325,27 @@ Children:
           name: Button
           validators: null
           value: '1'
+=======
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: velocity,
+            type: double, value: '0'}
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: acceleration,
+            type: double, value: '0'}
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: distance,
+            type: double, value: '0'}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+            '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24',
+            '25', '26', '27', '28', '29', '30', '31', '32']
+          default: '1'
+          name: Button
+          validators: null
+          value: '2'
+>>>>>>> origin/TankDrive
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
+<<<<<<< HEAD
           validators: *id006
           value: Shoot
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -339,6 +365,27 @@ Children:
         value: '2'
     Base: Joystick
     Name: ButtonBox
+=======
+          validators: [TypeDropdownSelected]
+          value: DriveXFeetMM
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: [whileHeld, whenPressed, whenReleased]
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: DriveXFeetBtn
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: *id003
+        default: 1
+        name: Number
+        validators: *id004
+        value: '2'
+    Base: Joystick
+    Name: buttonBox
+>>>>>>> origin/TankDrive
   Properties: {}
   Base: OI
   Name: Operator Interface
@@ -395,6 +442,7 @@ Children:
         default: []
         name: Parameters
         validators: null
+<<<<<<< HEAD
         value: []
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
@@ -445,6 +493,17 @@ Children:
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Shooter}
+=======
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: velocity, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: acceleration,
+          type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: distance, type: double}
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
+>>>>>>> origin/TankDrive
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
         default: []
         name: Parameter presets
@@ -453,6 +512,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterSet
           name: default
           parameters:
+<<<<<<< HEAD
           - {name: speed, type: double, value: '0.4'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
@@ -529,6 +589,15 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: RunIntake
+=======
+          - {name: velocity, type: double, value: '0'}
+          - {name: acceleration, type: double, value: '0'}
+          - {name: distance, type: double, value: '10'}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: DriveXFeetMM
+>>>>>>> origin/TankDrive
   Properties: {}
   Base: Commands
   Name: Commands
