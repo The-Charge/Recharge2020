@@ -65,17 +65,16 @@ public Joystick buttonBox;
 
 buttonBox = new Joystick(2);
 
-//indexerBtn = new JoystickButton(buttonBox, 9);
-//indexerBtn.whileHeld(new Index(0));
+indexerBtn = new JoystickButton(buttonBox, 9);
+indexerBtn.whileHeld(new Index(0.4));
 
 shootBtn = new JoystickButton(buttonBox, 9);
-shootBtn.whileHeld(new Shoot(0));
+shootBtn.whileHeld(new Shoot(0.4));
 leftJoystick = new Joystick(1);
 
 rightJoystick = new Joystick(0);
 
-indexerBtn = new JoystickButton(rightJoystick, 1);
-indexerBtn.whileHeld(new Index(0));
+
 shiftLowBtn = new JoystickButton(rightJoystick, 2);
 shiftLowBtn.whenPressed(new ShiftLow());
 shiftHighBtn = new JoystickButton(rightJoystick, 1);

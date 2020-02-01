@@ -39,7 +39,7 @@ public class Shoot extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        //Robot.shooter.initSpeedMode();
+        Robot.shooter.initSpeedMode();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -47,7 +47,7 @@ public class Shoot extends Command {
     protected void execute() {
         double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
         Robot.shooter.setPercentSpeedPID(xAxisVal);
-        //Robot.shooter.run(m_speed);
+       // Robot.shooter.run(m_speed);
         SmartDashboard.putNumber("XAxisVal", xAxisVal);
         }
 

@@ -62,8 +62,8 @@ private WPI_TalonSRX rightMotorShooter;
     public double SHOOTER_OUTWARD_MULTIPLIER = 0;
 
     private final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SEC = 0;
-//need to figure out the max ticks so I just set it to 0 for now^^
+    private static final int MAX_TICKS_PER_SEC = 9000;
+
     public Shooter() {
 
     leftMotorShooter = new WPI_TalonSRX(7);       
@@ -139,6 +139,8 @@ private WPI_TalonSRX rightMotorShooter;
         SmartDashboard.putNumber("PID Val", setSpeed);
         leftMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
         rightMotorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
+       //leftMotorShooter.set(setSpeed);
+       //rightMotorShooter.set(setSpeed);
     }
     
     public int getTicksPerSecondLeft(){

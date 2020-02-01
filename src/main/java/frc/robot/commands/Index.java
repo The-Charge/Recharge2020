@@ -47,8 +47,9 @@ public class Index extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        double xAxisVal = Robot.oi.rightJoystick.getRawAxis(0);
-        Robot.indexer.setPercentSpeedPID(xAxisVal);
+        double yAxisVal = Robot.oi.buttonBox.getRawAxis(1);
+        Robot.indexer.setPercentSpeedPID(yAxisVal);
+        SmartDashboard.putNumber("Y AXIS VAL", yAxisVal);
     }
 
     // Make this return true when this Command no longer needs to run execute()
