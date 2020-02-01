@@ -122,9 +122,9 @@ shooter = new Shooter();
         SmartDashboard.putNumber("Current Motor Output:", Robot.drivetrain.pidController.calculate(Robot.drivetrain.getGyroYaw()));
         SmartDashboard.putNumber("Current Turn Error:", Robot.drivetrain.pidController.getPositionError());
         SmartDashboard.putNumber("Current Setpoint:", Robot.drivetrain.pidController.getSetpoint());
-        SmartDashboard.putData("TurnTo0:", new TurnNDegreesRelative(0));
-        SmartDashboard.putData("TurnTo90:", new TurnNDegreesRelative(90));
-        SmartDashboard.putData("TurnTo180:", new TurnNDegreesRelative(180));
-        SmartDashboard.putData("TurnNDegrees:", new TurnNDegreesRelative(SmartDashboard.getNumber("Degrees:", 0)));
+        SmartDashboard.putData("TurnTo0:", new TurnNDegreesAbsolute(0));
+        SmartDashboard.putData("TurnTo90:", new TurnNDegreesAbsolute(90));
+        SmartDashboard.putData("TurnTo180:", new TurnNDegreesAbsolute(180));
+        SmartDashboard.putData("TurnNDegrees:", new TurnNDegreesAbsolute(SmartDashboard.getNumber("Degrees:", 0)));
     }
 }
