@@ -121,5 +121,14 @@ intake = new Intake();
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+        SmartDashboard.putNumber("Gyro Position:", Robot.drivetrain.getGyroYaw());
+        SmartDashboard.putNumber("Current Motor Output:", Robot.drivetrain.pidController.calculate(Robot.drivetrain.getGyroYaw()));
+        SmartDashboard.putNumber("Current Turn Error:", Robot.drivetrain.pidController.getPositionError());
+        SmartDashboard.putNumber("Current Setpoint:", Robot.drivetrain.pidController.getSetpoint());
+        SmartDashboard.putData("TurnTo0:", new TurnNDegreesAbsolute(0));
+        SmartDashboard.putData("TurnTo90:", new TurnNDegreesAbsolute(90));
+        SmartDashboard.putData("TurnTo180:", new TurnNDegreesAbsolute(180));
+        SmartDashboard.putData("TurnNDegrees:", new TurnNDegreesAbsolute(SmartDashboard.getNumber("Degrees:", 0)));
     }
 }
