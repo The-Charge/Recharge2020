@@ -78,7 +78,7 @@ shiftHighBtn = new JoystickButton(rightJoystick, 1);
 shiftHighBtn.whenPressed(new ShiftHigh());
 
 quarterSpeedBtn = new JoystickButton(rightJoystick, 4);
-        quarterSpeedBtn.whileHeld(new QuarterSpeed());
+        quarterSpeedBtn.whenPressed(new QuarterSpeed());
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("ShiftHigh", new ShiftHigh());
