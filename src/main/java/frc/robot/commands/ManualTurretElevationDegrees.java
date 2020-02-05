@@ -55,9 +55,10 @@ public class ManualTurretElevationDegrees extends Command {
             m_targetAngle = MIN_ANGLE;
 
         
-        //This function uses the Law of Cosines to find the total length
-        //  of the actuator based on some other values from the CAD team
-        actuatorDistance = Math.sqrt(Math.pow(Turret.TURRET_SIDE_A, 2) + Math.pow(Turret.TURRET_SIDE_B, 2) - 2 * Turret.TURRET_SIDE_A * Turret.TURRET_SIDE_B * Math.cos(90 - m_targetAngle));
+        // This line uses the Law of Cosines to find the total length
+        //  of the actuator based on some other values from the CAD team:
+        //  c^2 = a^2 + b^2 - 2abCos(C):
+        actuatorDistance = Math.sqrt(Math.pow(Turret.TURRET_SIDE_A, 2) + Math.pow(Turret.TURRET_SIDE_B, 2) - 2 * Turret.TURRET_SIDE_A * Turret.TURRET_SIDE_B * Math.cos(94.4 - m_targetAngle));
         
         Robot.turret.getElevationServo().set(actuatorDistance);
     }
