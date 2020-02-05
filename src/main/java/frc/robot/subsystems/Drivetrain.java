@@ -63,7 +63,7 @@ private WPI_TalonFX leftBackMotor;
     private static final int TICKS_PER_FOOT = 5270;    
 
     //Motion Magic (all values still need to be changed, these are values for plybot)
-    public double MotionMagicP = 1; //gain tuned...
+    public double MotionMagicP = .8; //gain tuned...
     public double MotionMagicI = 0.0;
     public double MotionMagicD = 0.001;
     public double MotionMagicF = 0.65;
@@ -246,8 +246,8 @@ leftBackMotor = new WPI_TalonSRX(6);
     	rightFrontMotor.setSelectedSensorPosition(0, MotionMagicPIDIndex, TIMEOUT_MS);
         
         //Smoothing factor
-        //leftFrontMotor.configMotionSCurveStrength(smoothing);
-        //rightFrontMotor.configMotionSCurveStrength(smoothing);
+        leftFrontMotor.configMotionSCurveStrength(smoothing);
+        rightFrontMotor.configMotionSCurveStrength(smoothing);
 
     	MotionMagicDistance = distance * TICKS_PER_FOOT;
         leftFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
