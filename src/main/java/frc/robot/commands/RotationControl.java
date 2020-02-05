@@ -32,6 +32,7 @@ public class RotationControl extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        Robot.controlPanel.setCounter(0);
 
     }
 
@@ -44,7 +45,7 @@ public class RotationControl extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        if (Robot.controlPanel.getCounter()>16) return true;
+        if (Robot.controlPanel.getCounter()>26) return true;
         return false;
     }
 
