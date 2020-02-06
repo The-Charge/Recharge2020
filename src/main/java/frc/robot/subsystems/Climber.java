@@ -46,6 +46,8 @@ private WPI_TalonSRX climberMotor;
 	private final static double D_CONSTANT = 0.0;
     private final static double F_CONSTANT = 0.0;
     
+    private final double ROTATIONS_TO_CLIMB = 35;
+
     private double posP = P_CONSTANT;
     private double posI = I_CONSTANT;
     private double posD = D_CONSTANT;
@@ -106,6 +108,14 @@ climberMotor = new WPI_TalonSRX(13);
         else
             climberMotor.set(ControlMode.Position, MAX_TICKS_PER_SEC * percent );
     } 
+    public boolean reached(boolean goingUp)
+    {
+        if (goingUp){
+            return (climberMotor.getSelectedSensorPosition() < -ROTATIONS_TO_CLIMB);
+        }else{
+            return (climberMotor.getSelectedSensorPosition() > 0);
+        }
+    }
 
     public void stop(){
         climberMotor.set(0);
@@ -120,7 +130,7 @@ climberMotor = new WPI_TalonSRX(13);
     	climberMotor.config_kI(PID_SLOT_SPEED_MODE, posI, TIMEOUT_MS);
     	climberMotor.config_kD(PID_SLOT_SPEED_MODE, posD, TIMEOUT_MS);
     	climberMotor.config_kF(PID_SLOT_SPEED_MODE, posF, TIMEOUT_MS);
-
+        
     }
 
     
