@@ -11,6 +11,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.MathUtil;
 import frc.robot.Robot;
 
@@ -55,7 +56,8 @@ public class TankDrive extends Command {
 
 
         Robot.drivetrain.run(leftSpeed, rightSpeed);
-  
+        SmartDashboard.putNumber("Left Speed", leftSpeed);
+        SmartDashboard.putNumber("Right Speed", rightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
