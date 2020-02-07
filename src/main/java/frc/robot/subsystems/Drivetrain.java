@@ -220,8 +220,6 @@ leftBackMotor = new WPI_TalonSRX(6);
         rightFrontMotor.configPeakOutputForward(1, TIMEOUT_MS);
         rightFrontMotor.configPeakOutputReverse(-1, TIMEOUT_MS);
 
-
-
     	leftFrontMotor.selectProfileSlot(MotionMagicPIDSlot, MotionMagicPIDIndex);
     	rightFrontMotor.selectProfileSlot(MotionMagicPIDSlot, MotionMagicPIDIndex);
     	
@@ -258,7 +256,8 @@ leftBackMotor = new WPI_TalonSRX(6);
 
     public boolean isAtPIDDestination() {
 		return (Math.abs(this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500) || (Math.abs(this.rightFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) - MotionMagicDistance) < 500);// || this.leftFrontMotor.getSelectedSensorPosition(MotionMagicPIDIndex) < -MotionMagicDistance + 6000)
-	}
+    }
+    
     
     
     
