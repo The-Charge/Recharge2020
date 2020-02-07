@@ -129,6 +129,11 @@ public class ColorSensor extends Subsystem {
     public String getColorString(){
       return colorString;
     }
+    public double getConfidence(){
+    Color detectedColors = m_colorSensor.getColor();
+    ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColors);
+    return match.confidence;
+    }
   
 
       
