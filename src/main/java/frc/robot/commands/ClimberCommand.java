@@ -40,17 +40,15 @@ public class ClimberCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        Robot.climber.initPositionMode();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        if (Robot.climber.reached(goingUp))
-        {
-            Robot.climber.stop();
-        }else{
-            Robot.climber.runManual(m_speed);
-        }
+        
+        Robot.climber.runManual(m_speed);
+        
 
     }
 
@@ -65,6 +63,11 @@ public class ClimberCommand extends Command {
     protected void end() {
         Robot.climber.stop();
     }
+
+    /*
+        Need to add a speed command that uses the subsystem. The Speed Mode will go all the way up at a set speed
+        The Pos Mode will take in a set position and go to it. Need to add initSpeedMode to this subsystem.
+    */
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
