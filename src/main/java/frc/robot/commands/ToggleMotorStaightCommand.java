@@ -38,12 +38,18 @@ public class ToggleMotorStaightCommand extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        Robot.drivetrain.setPercentVBus();
         Robot.drivetrain.setLocked(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        double leftSpeed, rightSpeed, avgSpeed;
+        rightSpeed = -Robot.oi.rightJoystick.getY();
+        leftSpeed = -Robot.oi.leftJoystick.getY();
+        avgSpeed = (rightSpeed + leftSpeed) / 2;
+        Robot.drivetrain.run(avgSpeed, avgSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -55,7 +61,7 @@ public class ToggleMotorStaightCommand extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.drivetrain.setLocked(false);;
+        Robot.drivetrain.setLocked(false);
     }
 
     // Called when another command which requires one or more of the same

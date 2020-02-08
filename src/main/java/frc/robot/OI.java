@@ -65,8 +65,8 @@ public Joystick buttonBox;
 
 buttonBox = new Joystick(2);
 
-toggleMotorStaightBtn = new JoystickButton(buttonBox, 4);
-toggleMotorStaightBtn.whenPressed(new ToggleMotorStaightCommand());
+toggleMotorStaightBtn = new JoystickButton(buttonBox, 9);
+toggleMotorStaightBtn.whileHeld(new ToggleMotorStaightCommand());
 shootBtn = new JoystickButton(buttonBox, 1);
 shootBtn.whileHeld(new Shoot(0));
 leftJoystick = new Joystick(1);
