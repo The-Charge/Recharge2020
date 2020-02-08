@@ -247,7 +247,6 @@ leftBackMotor = new WPI_TalonFX(6);
 	public boolean getReversed(){
         return isReversed;
     }
-    }
     public void setReversed(boolean r){
         isReversed = r;
     }
