@@ -338,19 +338,21 @@ Children:
           default: []
           name: Parameters
           validators: null
-          value: []
+          value:
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed,
+            type: double, value: '0.5'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '1'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id006
-          value: ManualClimbUp
+          value: ClimberSpeedMode
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id007
           default: whileHeld
@@ -358,7 +360,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: ManualClimbUpBtn
+      Name: ClimbUp
     - Children: []
       Properties:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
@@ -367,19 +369,21 @@ Children:
           default: []
           name: Parameters
           validators: null
-          value: []
+          value:
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: speed,
+            type: double, value: '-0.5'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '1'
           name: Button
           validators: null
-          value: '4'
+          value: '6'
         Command: !!robotbuilder.data.properties.TypeSelectionProperty
           default: None
           name: Command
           type: Command
           validators: *id006
-          value: ManualClimbDown
+          value: ClimberSpeedMode
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id007
           default: whileHeld
@@ -387,7 +391,7 @@ Children:
           validators: null
           value: whileHeld
       Base: Joystick Button
-      Name: ManualClimbDownBtn
+      Name: ClimbDown
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id008
@@ -581,51 +585,38 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
-    Name: ManualClimbUp
-  - Children: []
-    Properties:
-      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: false}
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Run When Disabled, validators: null, value: false}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Climber}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: []
-        name: Parameter presets
-        validators: null
-        value: []
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: ManualClimbDown
-  - Children: []
-    Properties:
-      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Autonomous Selection, validators: null, value: false}
-      Parameters: !!robotbuilder.data.properties.ParametersProperty
-        default: []
-        name: Parameters
-        validators: null
-        value: []
-      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Run When Disabled, validators: null, value: false}
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Climber}
-      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id010 []
-        name: Parameter presets
-        validators: null
-        value: *id010
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
     Name: ClimberCommand
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value:
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: speed, type: double}
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Climber}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value:
+        - !!robotbuilder.data.properties.ParameterSet
+          name: up
+          parameters:
+          - {name: speed, type: double, value: '0.5'}
+        - !!robotbuilder.data.properties.ParameterSet
+          name: down
+          parameters:
+          - {name: speed, type: double, value: '-0.5'}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ClimberSpeedMode
   Properties: {}
   Base: Commands
   Name: Commands
