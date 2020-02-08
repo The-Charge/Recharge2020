@@ -108,7 +108,8 @@ public void rotateX(){
 }
 public void rotateColor(Color desiredColor){
   Color currentColor = Robot.colorSensor.getColor();
-  if(!desiredColor.equals(currentColor) && confidences>.9375){ 
+  confidences = Robot.colorSensor.getConfidence();
+  if(!desiredColor.equals(currentColor) && confidences>.8){ 
     controlPanelMotor.set(.5);
   }
   
