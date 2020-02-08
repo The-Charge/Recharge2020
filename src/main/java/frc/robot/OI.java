@@ -65,7 +65,7 @@ public Joystick buttonBox;
 
 buttonBox = new Joystick(2);
 
-shootBtn = new JoystickButton(buttonBox, 1);
+shootBtn = new JoystickButton(buttonBox, 9);
 shootBtn.whileHeld(new Shoot(0));
 leftJoystick = new Joystick(1);
 

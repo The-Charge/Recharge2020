@@ -37,17 +37,36 @@ public class HalfSpeed extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
-        
-        if (Robot.drivetrain.getHalf() == false)
-        {
-            Robot.drivetrain.setHalf(true);
-        }
-        else
-        {
-            Robot.drivetrain.setHalf(false);
-        }
+        Robot.drivetrain.setPercentVBus();
     }
 
+    @Override
+    protected void execute() {
+        double leftSpeed, rightSpeed;
+        rightSpeed = -Robot.oi.rightJoystick.getY() * .5;
+        leftSpeed = -Robot.oi.leftJoystick.getY() * .5;
+
+        Robot.drivetrain.run(leftSpeed, rightSpeed);
+  
+    }
+    // Make this return true when this Command no longer needs to run execute()
+    @Override
+    protected boolean isFinished() {
+        return false;
+    }
+
+    // Called once after isFinished returns true
+    @Override
+    protected void end() {
+        Robot.drivetrain.stop();
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    @Override
+    protected void interrupted() {
+        end();
+    }
     
 
 }
