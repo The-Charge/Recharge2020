@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
@@ -58,8 +59,8 @@ private WPI_TalonFX motorShooter;
     public double SHOOTER_OUTWARD_MULTIPLIER = 0;
 
     private final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SEC = 0;
-//need to figure out the max ticks so I just set it to 0 for now^^
+    private static final int MAX_TICKS_PER_SEC = 9000;
+
     public Shooter() {
 
     //leftMotorShooter = new WPI_TalonSRX(7);       
@@ -118,7 +119,9 @@ private WPI_TalonFX motorShooter;
     }
 
     public void setPercentSpeedPID(double setSpeed) {
+        SmartDashboard.putNumber("PID Val", setSpeed);
         motorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
+  
     }
     
     public int getTicksPerSecondLeft(){

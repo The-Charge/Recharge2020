@@ -42,6 +42,7 @@ public static Shifters shifters;
 public static Shooter shooter;
 public static Turret turret;
 public static Intake intake;
+public static Indexer indexer;
 public static Cooling cooling;
 public static ControlPanel controlPanel;
 public static ColorSensor colorSensor;
@@ -61,6 +62,7 @@ shifters = new Shifters();
 shooter = new Shooter();
 turret = new Turret();
 intake = new Intake();
+indexer = new Indexer();
 cooling = new Cooling();
 controlPanel = new ControlPanel();
 colorSensor = new ColorSensor();
@@ -136,5 +138,6 @@ colorSensor = new ColorSensor();
         SmartDashboard.putData("TurnTo90:", new TurnNDegreesAbsolute(90));
         SmartDashboard.putData("TurnTo180:", new TurnNDegreesAbsolute(180));
         SmartDashboard.putData("TurnNDegrees:", new TurnNDegreesAbsolute(SmartDashboard.getNumber("Degrees:", 0)));
+		 //SmartDashboard.putData(Indexer.getInstance);
     }
 }
