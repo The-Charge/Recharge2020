@@ -11,6 +11,7 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -49,6 +50,9 @@ public class ToggleMotorStaightCommand extends Command {
         rightSpeed = -Robot.oi.rightJoystick.getY();
         leftSpeed = -Robot.oi.leftJoystick.getY();
         avgSpeed = (rightSpeed + leftSpeed) / 2;
+        SmartDashboard.putNumber("RightSpeed: ", rightSpeed);
+        SmartDashboard.putNumber("LeftSpeed: ", leftSpeed);
+        SmartDashboard.putNumber("AvgSpeed: ", avgSpeed);
         Robot.drivetrain.run(avgSpeed, avgSpeed);
     }
 
