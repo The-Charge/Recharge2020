@@ -1,0 +1,114 @@
+/* Outer SVG Elements */
+#line-follow {
+    width: 125px;
+    height: 175px;
+}
+#ball-pickup {
+    width: 125px;
+    height: 175px;
+}
+#gyro {
+    width: 175px;
+    height: 175px;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+#robot-diagram {
+    position: absolute;
+    bottom: 1px;
+    right: 1vw;
+}
+#hatch-grabber {
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    bottom: 1px;
+    left: 1hw;
+}
+
+/* Specific Elements */
+
+#gyro-arm {
+    -webkit-transform-origin: bottom;
+    -ms-transform-origin: bottom;
+    transform-origin: bottom;
+}
+#gyro-number {
+    font-size: 25px;
+    text-anchor: middle;
+}
+#robot-arm {
+    -webkit-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right;
+}
+#robot-hatch {
+    -webkit-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right;
+}
+#team {
+    font-size: 28px;
+    letter-spacing: -1px;
+}
+#error-bang {
+    fill: black;
+    font-size: 50px;
+    font-weight: 700px;
+    text-anchor: middle;
+}
+.error-text {
+    fill: orange;
+    letter-spacing: -1px;
+    font-weight: bolder;
+    text-anchor: middle;
+}
+
+/* General Elements */
+
+.guide-line {
+    stroke-width: 1;
+    stroke-dasharray: 8, 8;
+}
+.stroke-on {
+    stroke: #59f442;
+    stroke-width: 3;
+}
+.stroke-mid {
+    stroke: orange;
+}
+.stroke-off {
+    stroke: red;
+}
+
+.fill-on {
+    fill: #59f442;
+    font-weight: bold;
+}
+.fill-mid {
+    fill: orange;
+    font-weight: bold;
+}
+.fill-off {
+    fill: red;
+}
+
+.status-text {
+    font-size: 30px;
+    font-weight: 700;
+}
+.guide-warning {
+    stroke: black;
+    fill: orange;
+}
+.guide-warning-icon-text {
+    fill: black;
+    font-weight: 800;
+}
+.guide-warning-text {
+    fill: orange;
+    font-weight: 700;
+}
+#pickup-status {
+    font-weight: 900 !important;
+}
