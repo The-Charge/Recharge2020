@@ -8,9 +8,10 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package frc.robot.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Robot;
 
 /**
@@ -37,18 +38,17 @@ public class QuarterSpeed extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        if(Robot.drivetrain.getQuarter() == false){
-            Robot.drivetrain.setQuarter(true);
-        }
-        else{
-            Robot.drivetrain.setQuarter(false);
-        }
-    
+        Robot.drivetrain.setPercentVBus();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+         double leftSpeed, rightSpeed;
+        rightSpeed = -Robot.oi.rightJoystick.getY() * 0.25;
+        leftSpeed = -Robot.oi.leftJoystick.getY() * 0.25;
+        Robot.drivetrain.run(leftSpeed, rightSpeed);
+  
     }
 
     // Make this return true when this Command no longer needs to run execute()
