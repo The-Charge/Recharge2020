@@ -34,23 +34,22 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 public class Drivetrain extends Subsystem {
 
 
-    /*
 private WPI_TalonFX rightFrontMotor;
 private WPI_TalonFX rightMidMotor;
 private WPI_TalonFX rightBackMotor;
 private WPI_TalonFX leftFrontMotor;
 private WPI_TalonFX leftMidMotor;
 private WPI_TalonFX leftBackMotor;
-*/
 
 
-    //Motors
+    /**Motors
  	private WPI_TalonSRX rightFrontMotor;
     private WPI_TalonSRX rightMidMotor;
     private WPI_TalonSRX rightBackMotor;
     private WPI_TalonSRX leftFrontMotor;
     private WPI_TalonSRX leftMidMotor;
     private WPI_TalonSRX leftBackMotor;
+	*/
     //PID Constants (all values still need to be changed, these are values for plybot)
     private static final double SPEED_P_CONSTANT = 0.25;
     private static final double SPEED_I_CONSTANT = 0.0001;   //lowered
@@ -58,7 +57,7 @@ private WPI_TalonFX leftBackMotor;
     private static final double SPEED_F_CONSTANT = 0.12;
 
     private static final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SECOND = 9000;  
+    private static final int MAX_TICKS_PER_SECOND = 9000;
     private static final int TICKS_PER_FOOT = 5270;    
 
     //Motion Magic (all values still need to be changed, these are values for plybot)
@@ -91,8 +90,10 @@ private WPI_TalonFX leftBackMotor;
 
     private static final AHRS ahrs = new AHRS(Port.kMXP);
 
+    private static boolean isReversed = false;
+
     public Drivetrain() {
-        /** 
+
 rightFrontMotor = new WPI_TalonFX(1);
 
 
@@ -117,17 +118,17 @@ leftBackMotor = new WPI_TalonFX(6);
 
 
         
-*/
+
 
 
     //Motors just to test on Plybot
-    rightFrontMotor = new WPI_TalonSRX(14);
-    rightMidMotor = new WPI_TalonSRX(2);
-    rightBackMotor = new WPI_TalonSRX(15);
+    //rightFrontMotor = new WPI_TalonSRX(14);
+    //rightMidMotor = new WPI_TalonSRX(2);
+    //rightBackMotor = new WPI_TalonSRX(15);
 
-    leftFrontMotor = new WPI_TalonSRX(0);
-    leftMidMotor = new WPI_TalonSRX(5);
-    leftBackMotor = new WPI_TalonSRX(1);
+    //leftFrontMotor = new WPI_TalonSRX(0);
+    //leftMidMotor = new WPI_TalonSRX(5);
+    //leftBackMotor = new WPI_TalonSRX(1);
 
     rightFrontMotor.setInverted(true);
     rightMidMotor.setInverted(true);
@@ -175,6 +176,11 @@ leftBackMotor = new WPI_TalonFX(6);
 
         leftFrontMotor.set(leftSpeed);
         rightFrontMotor.set(rightSpeed);
+
+        if(isReversed){
+            leftFrontMotor.set(-1*leftSpeed);
+            rightFrontMotor.set(-1*rightSpeed);
+        }
 
     }
 
@@ -232,7 +238,13 @@ leftBackMotor = new WPI_TalonFX(6);
         leftFrontMotor.set(ControlMode.Velocity, MAX_TICKS_PER_SECOND * setSpeedL);
         rightFrontMotor.set(ControlMode.Velocity, MAX_TICKS_PER_SECOND * setSpeedR);
     }
-    
+
+    public boolean getReversed(){
+        return isReversed;
+    }
+    public void setReversed(boolean r){
+        isReversed = r;
+    }
 	 public void writePIDs(double output){
 		leftFrontMotor.pidWrite(output);
 		rightFrontMotor.pidWrite(-output);
