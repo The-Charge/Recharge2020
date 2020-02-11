@@ -54,6 +54,7 @@ public class OI {
 public JoystickButton shiftHighBtn;
 public JoystickButton shiftLowBtn;
 public JoystickButton quarterSpeedBtn;
+public JoystickButton halfSpeedBtn;
 public Joystick rightJoystick;
 public Joystick leftJoystick;
 public JoystickButton shootBtn;
@@ -79,6 +80,8 @@ rightJoystick = new Joystick(0);
 
 quarterSpeedBtn = new JoystickButton(rightJoystick, 4);
 quarterSpeedBtn.whileHeld(new QuarterSpeed());
+halfSpeedBtn = new JoystickButton(rightJoystick, 1);
+halfSpeedBtn.whileHeld(new HalfSpeed());
 shiftLowBtn = new JoystickButton(rightJoystick, 2);
 shiftLowBtn.whenPressed(new ShiftLow());
 shiftHighBtn = new JoystickButton(rightJoystick, 1);
@@ -97,7 +100,8 @@ shiftHighBtn.whenPressed(new ShiftHigh());
         SmartDashboard.putData("DriveXFeetMM: default", new DriveXFeetMM(0, 0, 30));
         SmartDashboard.putData("TurnNDegreesAbsolute: default", new TurnNDegreesAbsolute(180));
         SmartDashboard.putData("InvertDrive", new InvertDrive());
-        SmartDashboard.putData("QuarterSpeed", new QuarterSpeed());
+		SmartDashboard.putData("QuarterSpeed", new QuarterSpeed());
+		SmartDashboard.putData("HalfSpeed", new HalfSpeed());
         SmartDashboard.putData("RotationControl", new RotationControl());
         SmartDashboard.putData("PositionControl", new PositionControl());
 
