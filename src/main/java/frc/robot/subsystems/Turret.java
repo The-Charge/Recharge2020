@@ -78,6 +78,7 @@ turretMotor = new WPI_TalonSRX(9);
     }
     public void stop()
     {
+        // FIXME: DRY (don't repeat yourself), call run(0)
         turretMotor.set(0);
     }
 

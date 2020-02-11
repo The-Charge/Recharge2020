@@ -106,6 +106,7 @@ intakeMotor = new WPI_TalonSRX(30);
     }
 
 	public void stop() {
+        // FIXME: DRY (don't repeat yourself). Call run(0)
         intakeMotor.set(0);
 	}
 

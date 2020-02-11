@@ -59,6 +59,7 @@ private WPI_TalonFX motorShooter;
     public double SHOOTER_OUTWARD_MULTIPLIER = 0;
 
     private final int TIMEOUT_MS = 10;
+    // FIXME: Since I doubt we have the actual robot, should probably leave a //TODO saying this needs adjusted (as well as the PID values above)
     private static final int MAX_TICKS_PER_SEC = 9000;
 
     public Shooter() {
@@ -97,6 +98,7 @@ private WPI_TalonFX motorShooter;
 
     public void stop(){
         motorShooter.set(0); 
+        // FIXME: View > Render whitespace
         motorShooter.setNeutralMode(NeutralMode.Brake);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
     }
 
@@ -119,6 +121,7 @@ private WPI_TalonFX motorShooter;
     }
 
     public void setPercentSpeedPID(double setSpeed) {
+        // FIXME: Need better smart dashboard key, would recommend throwing in class name
         SmartDashboard.putNumber("PID Val", setSpeed);
         motorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
   

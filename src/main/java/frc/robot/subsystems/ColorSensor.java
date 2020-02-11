@@ -110,6 +110,7 @@ public class ColorSensor extends Subsystem {
     } else {
       colorString = "Unknown"; 
     }
+    //FIXME: There's no need to System.out.print it when you can use smart dashboard. Can remove this as it'll clutter the riolog
     System.out.print(colorString);
     /**
      * Open Smart Dashboard or Shuffleboard to see the color detected by the 

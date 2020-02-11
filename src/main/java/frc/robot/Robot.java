@@ -129,11 +129,13 @@ colorSensor = new ColorSensor();
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
+        // FIXME: These can go in drivetrain.periodic()
         SmartDashboard.putNumber("Gyro Position:", Robot.drivetrain.getGyroYaw());
         SmartDashboard.putNumber("Current Motor Output:", Robot.drivetrain.pidController.calculate(Robot.drivetrain.getGyroYaw()));
         SmartDashboard.putNumber("Current Turn Error:", Robot.drivetrain.pidController.getPositionError());
         SmartDashboard.putNumber("Current Setpoint:", Robot.drivetrain.pidController.getSetpoint());
+        // FIXME: These should be done via robot builder (add presets).
+        // Even if you don't do them via robot builder, they should go in teleopInit (ran once) rather than in periodic (ran once per tick)
         SmartDashboard.putData("TurnTo0:", new TurnNDegreesAbsolute(0));
         SmartDashboard.putData("TurnTo90:", new TurnNDegreesAbsolute(90));
         SmartDashboard.putData("TurnTo180:", new TurnNDegreesAbsolute(180));

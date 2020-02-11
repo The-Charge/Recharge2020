@@ -81,10 +81,13 @@ controlPanelMotor = new WPI_TalonSRX(11);
     controlPanelMotor.set(pow);
 }
 public void stop(){
+  // FIXME: DRY (don't repeat yourself), Call run(0)
+  // FIXME: Normally would ignore it, but go View > Render whitespace
   controlPanelMotor.set(0);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 }
 
 public void rotateX(){
+  // FIXME: Need better name for smart dashboard key. Would recommend including class name
   SmartDashboard.putNumber("Counter", ctr);
   currentColor = Robot.colorSensor.getColorString();
   confidences = Robot.colorSensor.getConfidence();
@@ -94,6 +97,7 @@ public void rotateX(){
       controlPanelMotor.set(0.5);
     }
 
+    // FIXME: Use smart dashboard
     System.out.println("TEMP:" + temp + temp + temp + temp + temp);
     System.out.println("CURRENT:" + currentColor + currentColor + currentColor + currentColor + currentColor);
     System.out.println("Check:" + ctr);

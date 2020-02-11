@@ -82,11 +82,14 @@ addChild("ShifterSolenoid",shifterSolenoid);
     }
     
     public boolean isLow(){
+        //FIXME: Can just use boolean NOT:
+        // ie: return !shifterSolenoid.get();
         if (shifterSolenoid.get() == false) return true;
         else return false;
     }
 	
 	public void writeDashboardDebugValues() {
+        // FIXME: Need better smart dashboard key (ie: throw in class name)
 		SmartDashboard.putBoolean("High", !isLow());
 	}
 }
