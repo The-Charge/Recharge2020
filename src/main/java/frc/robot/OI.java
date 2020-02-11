@@ -74,7 +74,7 @@ shootBtn = new JoystickButton(buttonBox, 1);
 shootBtn.whileHeld(new Shoot(0));
 leftJoystick = new Joystick(1);
 
-rightJoystick = new Joystick(0);
+rightJoystick = new Joystick(2);
 
 shiftLowBtn = new JoystickButton(rightJoystick, 2);
 shiftLowBtn.whenPressed(new ShiftLow());
