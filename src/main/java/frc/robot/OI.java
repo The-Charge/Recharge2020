@@ -72,9 +72,9 @@ rotationControlBtn = new JoystickButton(buttonBox, 2);
 rotationControlBtn.whileHeld(new RotationControl());
 shootBtn = new JoystickButton(buttonBox, 1);
 shootBtn.whileHeld(new Shoot(0));
-leftJoystick = new Joystick(1);
+leftJoystick = new Joystick(0);
 
-rightJoystick = new Joystick(2);
+rightJoystick = new Joystick(1);
 
 shiftLowBtn = new JoystickButton(rightJoystick, 2);
 shiftLowBtn.whenPressed(new ShiftLow());

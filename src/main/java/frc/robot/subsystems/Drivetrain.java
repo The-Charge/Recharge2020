@@ -79,9 +79,9 @@ leftBackMotor = new WPI_TalonFX(10);
     leftBackMotor = new WPI_TalonSRX(1); */
 
 
-    leftFrontMotor.setInverted(true);
-    leftMidMotor.setInverted(true);
-    leftBackMotor.setInverted(true);
+    //leftFrontMotor.setInverted(true);
+    //leftMidMotor.setInverted(true);
+    //leftBackMotor.setInverted(true);
 
     leftMidMotor.follow(leftFrontMotor);
     leftBackMotor.follow(leftFrontMotor);
