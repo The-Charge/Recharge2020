@@ -40,7 +40,6 @@ public class ToggleLockStraight extends Command {
     @Override
     protected void initialize() {
         Robot.drivetrain.setPercentVBus();
-        Robot.drivetrain.setLocked(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -65,7 +64,7 @@ public class ToggleLockStraight extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.drivetrain.setLocked(false);
+        Robot.drivetrain.stop();
     }
 
     // Called when another command which requires one or more of the same
