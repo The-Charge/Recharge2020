@@ -34,6 +34,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
  */
 public class Drivetrain extends Subsystem {
 
+
 private WPI_TalonFX rightFrontMotor;
 private WPI_TalonFX rightMidMotor;
 private WPI_TalonFX rightBackMotor;
@@ -123,6 +124,7 @@ leftMidMotor = new WPI_TalonFX(5);
 
         
 leftBackMotor = new WPI_TalonFX(6);
+
         
 
 
