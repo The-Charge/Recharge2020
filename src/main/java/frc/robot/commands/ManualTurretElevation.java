@@ -42,25 +42,26 @@ public class ManualTurretElevation extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        setTimeout(10);
+        
+        // setTimeout(10);
         
         //Angle is currently being used as a percent of total length of the linear actuator (0 to 1)
-        Robot.turret.getElevationServo().set(m_setpoint);
+        // Robot.turret.getElevationServo().set(m_setpoint);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        
+        Robot.turret.getElevationServo().set(Robot.oi.getLeftJoystick().getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() { // This may not be necessary
-        double elevation = Robot.turret.getElevationServo().get();
-        if(Math.abs(elevation - m_setpoint) <= TOLERANCE) 
-            return true;
-        else
+        // double elevation = Robot.turret.getElevationServo().get();
+        // if(Math.abs(elevation - m_setpoint) <= TOLERANCE) 
+        //     return true;
+        // else
             return false;
     }
 

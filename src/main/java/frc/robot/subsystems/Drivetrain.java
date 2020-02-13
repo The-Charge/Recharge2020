@@ -103,13 +103,22 @@ public class Drivetrain extends Subsystem {
 
 
     //Motors just to test on Plybot
-    rightFrontMotor = new WPI_TalonSRX(14);
-    rightMidMotor = new WPI_TalonSRX(2);
-    rightBackMotor = new WPI_TalonSRX(15);
+    // rightFrontMotor = new WPI_TalonSRX(14);
+    // rightMidMotor = new WPI_TalonSRX(2);
+    // rightBackMotor = new WPI_TalonSRX(15);
 
-    leftFrontMotor = new WPI_TalonSRX(0);
-    leftMidMotor = new WPI_TalonSRX(5);
-    leftBackMotor = new WPI_TalonSRX(1);
+    // leftFrontMotor = new WPI_TalonSRX(0);
+    // leftMidMotor = new WPI_TalonSRX(5);
+    // leftBackMotor = new WPI_TalonSRX(1);
+
+        
+    rightFrontMotor = new WPI_TalonSRX(99999);
+    rightMidMotor = new WPI_TalonSRX(99999);
+    rightBackMotor = new WPI_TalonSRX(99999);
+
+    leftFrontMotor = new WPI_TalonSRX(99999);
+    leftMidMotor = new WPI_TalonSRX(99999);
+    leftBackMotor = new WPI_TalonSRX(99999);
 
     rightFrontMotor.setInverted(true);
     rightMidMotor.setInverted(true);
