@@ -61,12 +61,20 @@ public class PositionControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        //FIXME: You have 2 places where you're checking if you're at the color
+        //    controlPanel.rotateColor, and PositionControl.isFinished.
+        // DRY it up (don't repeat yourself).
+        // Either:
+        // a) Have control panel keep track of the color and have isFinished call controlPanel.isAtColor(no args)
+        // b) Have the control panel *not* keep track of the color (ie, just rotate), and have this call controlPanel.isAtColor(desiredColor)
+        // 
         Robot.controlPanel.rotateColor(targetColor);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
+        // FIXME: Would recommend renaming the smart dashboard key (at the very least throw the class name in so you know where it's coming from)
         SmartDashboard.putBoolean("Is at target", targetString.equals(Robot.colorSensor.getColorString().substring(0, 1)));
         return targetString.equals(Robot.colorSensor.getColorString().substring(0, 1));
     }

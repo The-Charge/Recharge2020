@@ -40,7 +40,7 @@ private WPI_TalonFX motorShooter;
                                  //in robotbuilder   
 
 
-
+//TODO: Tune PID values, current values based on Plybot
   
     private final static double SPEED_P_CONSTANT = 0.1;
 	private final static double SPEED_I_CONSTANT = 0.00001;
@@ -97,7 +97,7 @@ private WPI_TalonFX motorShooter;
 
     public void stop(){
         motorShooter.set(0); 
-        motorShooter.setNeutralMode(NeutralMode.Brake);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        motorShooter.setNeutralMode(NeutralMode.Brake);
     }
 
     public void run(double pow) {    	
@@ -119,7 +119,7 @@ private WPI_TalonFX motorShooter;
     }
 
     public void setPercentSpeedPID(double setSpeed) {
-        SmartDashboard.putNumber("PID Val", setSpeed);
+        SmartDashboard.putNumber("Shooter PID Val", setSpeed);
         motorShooter.set(ControlMode.Velocity, MAX_TICKS_PER_SEC * setSpeed);
   
     }
