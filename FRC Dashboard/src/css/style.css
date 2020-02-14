@@ -1,4 +1,13 @@
-* {
+:root {
+    --background: #333;
+    --dark-background: #222;
+    --shadow: #1c1c1c;
+    --main: white;
+    --on: lime;
+    --off: red;
+    --dull: #555;
+}
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,126 +15,121 @@
 ::-webkit-scrollbar {
     display: none;
 }
-option {
-    color: black;
-}
+
+/* Main Elements */
 body {
-    font: 16px sans-serif;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: white;
+    color: var(--main);
     overflow: hidden;
-    background: #222;
+    background: var(--dark-background);
+    font-family: sans-serif;
 }
-button, input[type="text"], input[type="number"], input[type="button"], .select-container, select {
+button, input[type="text"], input[type="number"], .select-container, select {
     color: white;
-    background: #444;
+    background: var(--dark-background);
     border: none;
     font-size: 14px;
     padding: 6px 8px;
     cursor: pointer;
     outline: 0;
 }
-.select-container {
-    padding: 0;
-    display: inline-block;
+hr {
+    border: 1px solid #555;
+    margin: 5px 0;
 }
-select {
-    border: none;
-    background: none;
-    color: white;
-    height: 30px;
-}
-input[type="text"], input[type="number"] {
-    cursor: text;
-}
-input[type="checkbox"] {
-    -webkit-filter: saturate(0);
-    filter: saturate(0);
-}
-/* Major interface panes, aside, article, header, etc. */
-body > * {
+
+/* Grid Setup */
+.grid-container {
+    display: grid;
     padding: 10px;
-    position: fixed;
-    overflow: scroll;
-    background: #222;
+    grid-gap: 15px;
+    width: 100vw;
+    height: 100vh;
+    grid-template: repeat(5, minmax(0, 1fr)) / repeat(4, minmax(0, 1fr)));
+    grid-template-areas:
+        "timer timer status gyro side side"
+        "cam cam cam gyro side side"
+        "cam cam cam other side side"
+        "cam cam cam other buttons buttons";
 }
+
+.grid-container > div {
+    box-shadow: 3px 6px var(--shadow);
+    background-color: var(--background);
+    position: relative;
+}
+
+.grid-container > div > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.grid-container > div > div > * {
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Grid Items */
 #timer {
     font-family: monospace;
-    display: block;
-    height: 20vh;
-    width: 30vw;
-    top: 0;
-    left: 0;
-    font-size: 20vh;
-    line-height: .8;
-    color: white;
+    font-size: 17vh;
+    grid-area: timer;
 }
-header {
-    width: 20vw;
-    height: 20vh;
-    top: 0;
-    left: 30vw;
-    color: white;
+
+#gyro {
+    grid-area: gyro;
 }
+
+#other {
+    grid-area: other;
+}
+
+#status {
+    grid-area: status;
+}
+#connect-button {
+    width: 100%;
+}
+#test-button {
+    width: 100%;
+    margin-top: 2px;
+}
+
+#side {
+    grid-area: side;
+}
+
+#buttons {
+    grid-area: buttons;
+}
+
 #camera {
-    padding: 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 50vw;
-    height: 80vh;
-    overflow: hidden;
-    background-color: #333;
-    /* You'll need to mess with this a bit to get your camera to work. Replace the url
-    with a live-updating image feed from your camera. Using other camera streaming systems
-    will require some tweaking. */
-    /* We found the url by going into OutlineViewer and finding CameraPublisher/cameraName/streams */
-    /* When the camera was changed to go through the Pi, the URL was changed as well. The old URL is:
-    http://10.26.19.2:1181/?action=stream. */
-    /* IMPORTANT: IF THIS DOES NOT WORK, TRY REMOVING '.mfpg' FROM THE END */
-    background-image:
-    /*url('http://10.26.19.2:1181/?action=stream');/*Usb Camera*/
-    /*url('http://172.22.11.2:1181/?action=stream');/*usb usb camera*/
-    url('http://frcvision.local:1181/stream.mjpg');/*Rasberry Pi IP*/
-    /*url('http://10.26.19.207:1181/?action=stream');/*Faster Rasberry Pi IP*/
+    grid-area: cam;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size: 100%;
 }
-article {
-    top: 0;
-    left: 50vw;
-    height: 100vh;
-    width: 35vw;
+#camera-label {
+    padding: 3px;
+    font-family: monospace;
+    background-color: var(--background);
+    opacity: 0.75;
+    height: 6vh;
+    font-size: 4vh;
 }
-svg * {
-    stroke: white;
-    fill: #222;
-    stroke-width: 2;
-    -webkit-transform-origin: center;
-    -ms-transform-origin: center;
-    transform-origin: center;
+#camera-status {
+    padding: 3px;
+    right: 3px;
+    font-family: monospace;
+    font-size: 4vh;
+    text-align: right;
 }
-.light-on {
-    fill: white;
-}
-text {
-    font-size: 16px;
-    letter-spacing: 2px;
-    stroke: none;
-    fill: white;
-}
-aside {
-    right: 0;
-    top: 0;
-    width: 15vw;
-    height: 100vh;
-}
-aside > * {
-    margin-bottom: 20px;
-}
+
+/* Connection Buttons */
 #login {
     position: fixed;
     display: none;
