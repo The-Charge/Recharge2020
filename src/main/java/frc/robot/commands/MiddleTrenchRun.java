@@ -28,16 +28,17 @@ public class MiddleTrenchRun extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-        new Shoot(0.4);
-        new TurnNDegreesAbsolute(129.1169);
-        new RunIntake(0.4);
-        new DriveXFeetMM(9.33333333333333);
-        new TurnNDegreesAbsolute(180);
-        new DriveXFeetMM(6);
-        new TurnNDegreesAbsolute(305.772);
-        new DriveXFeetMM(8.16666666667);
-        new TurnNDegreesAbsolute(0);
-        new Shoot(0.7);
+
+        addSequential(new Shoot(0.4));
+        addSequential(new TurnNDegreesAbsolute(129.1169));
+        addSequential(new RunIntake(0.4));
+        addSequential(new DriveXFeetMM(9.33333333333333));
+        addSequential(new TurnNDegreesAbsolute(180));
+        addSequential(new DriveXFeetMM(6));
+        addSequential(new  TurnNDegreesAbsolute(305.772));
+        addSequential(new DriveXFeetMM(8.16666666667));
+        addSequential(new TurnNDegreesAbsolute(0));
+        addSequential(new Shoot(0.7));
         
         // To run multiple commands at the same time,
         // use addParallel()

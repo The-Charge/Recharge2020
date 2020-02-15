@@ -28,14 +28,16 @@ public class LeftTrenchRun extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-        new RunIntake(0.4);
-        new DriveXFeetMM(10.8633333333333);
-        new TurnNDegreesAbsolute(90);
-        new DriveXFeetMM(1.5416666666666666667);
-        new TurnNDegreesAbsolute(48.5904);
-        new DriveXFeetMM(12.833333333333333333);
-        new TurnNDegreesAbsolute(45);
-        new Shoot(0.5);
+
+        addSequential(new RunIntake(0.4));
+        addSequential(new DriveXFeetMM(10.8633333333333));
+        addSequential(new TurnNDegreesAbsolute(90));
+        addSequential(new DriveXFeetMM(1.5416666666666666667));
+        addSequential(new TurnNDegreesAbsolute(48.5904));
+        addSequential(new DriveXFeetMM(12.833333333333333333));
+        addSequential(new TurnNDegreesAbsolute(45));
+        addSequential(new Shoot(0.5));
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

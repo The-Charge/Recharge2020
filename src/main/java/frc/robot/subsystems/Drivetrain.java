@@ -34,7 +34,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
  */
 public class Drivetrain extends Subsystem {
 
-
+/*
 private WPI_TalonFX rightFrontMotor;
 private WPI_TalonFX rightMidMotor;
 private WPI_TalonFX rightBackMotor;
@@ -42,18 +42,19 @@ private WPI_TalonFX leftFrontMotor;
 private WPI_TalonFX leftMidMotor;
 private WPI_TalonFX leftBackMotor;
 
+*/
 
 
 
-
-    /**Motors
+   
  	private WPI_TalonSRX rightFrontMotor;
     private WPI_TalonSRX rightMidMotor;
     private WPI_TalonSRX rightBackMotor;
     private WPI_TalonSRX leftFrontMotor;
     private WPI_TalonSRX leftMidMotor;
     private WPI_TalonSRX leftBackMotor;
-	*/
+    
+    
     //TODO: PID Constants (all values still need to be changed, these are values for plybot)
     private static final double SPEED_P_CONSTANT = 0.25;
     private static final double SPEED_I_CONSTANT = 0.0001;   //lowered
@@ -102,7 +103,7 @@ private WPI_TalonFX leftBackMotor;
         
 
 
-
+/*
 rightFrontMotor = new WPI_TalonFX(1);
 
 
@@ -125,12 +126,12 @@ leftMidMotor = new WPI_TalonFX(5);
         
 leftBackMotor = new WPI_TalonFX(6);
 
-        
+ */       
 
 
 
 
-   /*
+  
     rightFrontMotor = new WPI_TalonSRX(7);
     rightMidMotor = new WPI_TalonSRX(0);
     rightBackMotor = new WPI_TalonSRX(8);
@@ -138,7 +139,7 @@ leftBackMotor = new WPI_TalonFX(6);
     leftFrontMotor = new WPI_TalonSRX(2);
     leftMidMotor = new WPI_TalonSRX(1);
     leftBackMotor = new WPI_TalonSRX(3); 
-*/
+
     rightFrontMotor.setInverted(true);
     rightMidMotor.setInverted(true);
     rightBackMotor.setInverted(true);
