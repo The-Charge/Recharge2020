@@ -6,8 +6,17 @@ let ui = {
         screen: document.getElementById('camera'),
         label: document.getElementById('camera-label'),
         status: document.getElementById('camera-status'),
-    }
-
+    },
+    gyro: {
+        turret: {
+            val: 0,
+            offset: 0,
+            visualVal: 0,
+        },
+        container: document.getElementById('gyro'),
+        turret: document.getElementById('gyro-turret'),
+    },
+    test: document.getElementById('test-element'),
 };
 
 // Update camera every second
@@ -24,3 +33,18 @@ NetworkTables.addKeyListener('/robot/time', (key, value) => {
 addEventListener('error',(ev)=>{
     ipc.send('windowError',{mesg:ev.message,file:ev.filename,lineNumber:ev.lineno})
 })
+
+//Event Listeners:
+
+// Gyro rotation
+let updateGyro = (key, value) => {
+    ui.gyro.val = value;
+    ui.gyro.visualVal = Math.floor(ui.gyro.val - ui.gyro.offset);
+    ui.gyro.visualVal %= 360;
+    if (ui.gyro.visualVal < 0) {
+        ui.gyro.visualVal += 360;
+    }
+
+    ui.gyro.arm.style.transform = `rotate(${ui.gyro.visualVal}deg)`;
+};
+NetworkTables.addKeyListener('/SmartDashboard/Yaw', updateGyro);

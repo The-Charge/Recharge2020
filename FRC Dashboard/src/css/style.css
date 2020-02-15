@@ -4,8 +4,10 @@
     --shadow: #1c1c1c;
     --main: white;
     --on: lime;
+    --medium: yellow;
     --off: red;
     --dull: #555;
+    --text: rgb(200, 200, 200);
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -50,15 +52,58 @@ hr {
     height: 100vh;
     grid-template: repeat(5, minmax(0, 1fr)) / repeat(4, minmax(0, 1fr)));
     grid-template-areas:
-        "timer timer status gyro side side"
-        "cam cam cam gyro side side"
-        "cam cam cam other side side"
-        "cam cam cam other buttons buttons";
+        "side vision vision timer timer driver driver"
+        "side vision vision climber cam1 cam1 cam1"
+        "side elevation gyro climber cam1 cam1 cam1"
+        "side elevation gyro climber cam1 cam1 cam1";
+}
+
+@keyframes color {
+    12.5% {
+        box-shadow: 3px 6px #ff0000;
+    }
+    25% {
+        box-shadow: 3px 6px #ffa500;
+    }
+    37.5% {
+        box-shadow: 3px 6px #ffff00;
+    }
+    50% {
+        box-shadow: 3px 6px #7fff00;
+    }
+    62.5% {
+        box-shadow: 3px 6px #00ffff;
+    }
+    75% {
+        box-shadow: 3px 6px #0000ff;
+    }
+    87.5% {
+        box-shadow: 3px 6px #9932cc;
+    }
+    /* 100% {
+        box-shadow: 3px 6px #ff0000;
+    } */
+
+    /* 25% {
+        box-shadow: 3px 6px rgb(255, 255, 0);
+    }
+    50% {
+        box-shadow: 3px 6px rgb(255, 255, 0);
+    }
+    75% {
+        box-shadow: 3px 6px rgb(0, 118, 40);
+    } */
 }
 
 .grid-container > div {
-    box-shadow: 3px 6px var(--shadow);
+    box-shadow: 3px 6px #ff0000;
+    /* box-shadow: 3px 6px #d4ab08; */
+    /* box-shadow: 3px 6px rgb(0, 118, 40); */
     background-color: var(--background);
+    animation-name: color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
     position: relative;
 }
 
@@ -75,10 +120,38 @@ hr {
 }
 
 /* Grid Items */
+#driver-info {
+    grid-area: driver;
+}
+
+#auton {
+    font-size: 5vh;
+    grid-area: auton;
+}
+
+#vision {
+    grid-area: vision;
+}
+
+#climber {
+    grid-area: climber;
+}
+
+#elevation {
+    grid-area: elevation;
+}
+
+#heading {
+    grid-area: heading;
+}
+
 #timer {
     font-family: monospace;
     font-size: 17vh;
     grid-area: timer;
+    text-align: center;
+    /* Use this padding and font-size: 13vh if timer is only one grid tile */
+    /* padding: 20px 0; */
 }
 
 #gyro {
@@ -109,8 +182,8 @@ hr {
 }
 
 #camera {
-    grid-area: cam;
-    background-size: cover;
+    grid-area: cam1;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 #camera-label {
@@ -153,4 +226,21 @@ body.login #login {
 }
 #login > button {
     margin-left: 5px;
+}
+
+/* Text CSS */
+#title-text {
+    font-size: 4vh;
+    color: var(--text);
+    text-align: center;
+}
+
+#big-number {
+    font-size: 10vh;
+    text-align: center;
+}
+
+#indicator {
+    font-size: 7vh;
+    text-align: center;
 }

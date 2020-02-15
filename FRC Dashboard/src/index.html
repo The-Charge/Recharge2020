@@ -14,22 +14,90 @@
             <div>2:15</div>
         </div>
 
-        <div id="status">
+        <!-- <div id="status">
             <div>
                 <div style="color:#999">Robot State:</div>
                 <div id="robot-state">UNKNOWN</div>
-                <!-- <hr> -->
+                <!-- <hr>
                 <button id="connect-button">Connect</button>
                 <button id="test-button">Edit NetworkTables</button>
             </div>
-        </div>
+        </div> -->
 
         <div id="camera">
             <div id="camera-label">Front Camera</div>
             <div id="camera-status">Connection Error</div>
         </div>
 
+
+        <!-- <div id="auton">
+            <div>
+                <select id="auton-select">
+                    <option>No auton modes found</option>
+                </select>
+            </div>
+        </div> -->
+
+        <div id="vision">
+            <div>
+
+            </div>
+        </div>
+
+        <div id="climber">
+            <div>
+                <input id="test-element" type="range" min="0" max="28000" value="770">
+            </div>
+        </div>
+        <div id="elevation"></div>
+
+        <div id="gyro">
+            <div>
+                <svg style="margin-left: 18px; padding-top: 50px">
+                    <rect width="120" height="120"></rect>
+                    <rect id="robot-direction" x="30" y="0" width="60" height="40" style="fill: white;"></rect>
+                    <circle class="gyro-turret" cx="60" cy="60" r="40"></circle>
+                    <rect class="gyro-turret" id="turret-direction" x="53" y="21" width="15" height="20" style="fill: white;" transform="rotate(10, 0, 40)"></rect>
+                </svg>
+            </div>
+        </div>
+        
         <div id="side">
+            <div>
+                
+                <div style="color:#999">Robot State:</div>
+                <div id="robot-state">UNKNOWN</div>
+
+                <button id="connect-button">Connect</button>
+                <button id="test-button">Edit NetworkTables</button>
+                <hr>
+
+                <div id="title-text">Ball Count:</div>
+                <div id="big-number">5</div>
+                <hr>
+                
+                <div id="title-text">Control Panel:</div>
+                <div id="indicator">STATUS</div>
+                <hr>
+
+                <div id="title-text">Indexer:</div>
+                <div class="on" id="indicator">ON</div>
+                <hr>
+
+                <div id="title-text", style="padding-top: 10%;">Cycle Time:</div>
+                <div id="indicator", style="padding-top: 5%">0:00</div>
+            </div>
+
+        </div>
+
+        <div id="driver-info">
+            <div>
+                <div id="title-text", style="font-size: 7vh; text-align: left; margin-left: 65px; padding-top: 25px; display: inline-block">Gear: ​ ​</div>
+                <div class="on" id="indicator", style="padding-bottom: 50px; text-align: right; display: inline-block">HIGH</div>
+            </div>
+        </div>
+
+        <!-- <div id="side">
             <div>
                 <svg>
                     <circle id="ammo1" cx="30" cy="30" r="20"/>
@@ -42,9 +110,9 @@
                     <line class="divider" x1="10" y1="275" x2="400" y2="275"/>
                 </svg>
             </div>
-        </div>
+        </div> -->
 
-        <div id="buttons">
+        <!-- <div id="buttons">
             <div>
                 <svg>
                     <circle cx="50" cy="45" r="40"></circle>
@@ -53,7 +121,7 @@
         </div>
 
         <div id="gyro"></div>
-        <div id="other"></div>
+        <div id="other"></div> -->
     </div>
 
 

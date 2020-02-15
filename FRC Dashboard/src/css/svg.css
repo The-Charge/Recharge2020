@@ -25,22 +25,24 @@ text {
     color: var(--dull);
 }
 .off {
-    fill: var(--off);
     color: var(--off);
+    stroke: var(--off);
+    fill: var(--off);
 }
 .on {
-    fill: var(--on);
     color: var(--on);
+    stroke: var(--on);
+    fill: var(--on);
 }
 
 /* Class Presets */
 .divider {
     stroke: var(--dull);
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 /* Individual Styles */
 #target-label {
     font-size: 32px;
 }
-
-
