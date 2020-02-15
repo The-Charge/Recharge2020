@@ -53,7 +53,7 @@ addChild("CoolingSolenoid",coolingSolenoid);
         //         setDefaultCommand(new TankDrive());
         // If you want to set something to be "default", make a separate command, and make it the default.
         // It may seem a little excessive for a one liner, but will keep the code base consistant.
-        coolingSolenoid.set(true);
+		coolingSolenoid.set(true);
     }
 
     @Override
