@@ -73,9 +73,10 @@ public class MathUtil {
 	}
 
 	//Need to convert points to Pose2d objects and the way poionts prior to calling this method
+	/*
 	public Trajectory generateTrajectory(Pose2d startPos, Pose2d endPos, ArrayList<Translation2d> waypoints) {
 
-	/*
+	
 	var sideStart = new Pose2d(Units.feetToMeters(1.54), Units.feetToMeters(23.23), Rotation2d.fromDegrees(-180));
     var crossScale = new Pose2d(Units.feetToMeters(23.7), Units.feetToMeters(6.8),
     Rotation2d.fromDegrees(-160));
@@ -83,11 +84,12 @@ public class MathUtil {
     var interiorWaypoints = new ArrayList<Translation2d>();
     interiorWaypoints.add(new Translation2d(Units.feetToMeters(14.54), Units.feetToMeters(23.23)));
     interiorWaypoints.add(new Translation2d(Units.feetToMeters(21.04), Units.feetToMeters(18.23)));
-	*/
+	
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(12), Units.feetToMeters(12));  //Need to input max velocity and accleration
     config.setReversed(true);
 
     return (TrajectoryGenerator.generateTrajectory(startPos, waypoints, endPos, config));
 
 	}
+	*/
 }
