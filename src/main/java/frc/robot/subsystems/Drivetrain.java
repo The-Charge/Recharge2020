@@ -59,8 +59,8 @@ private WPI_TalonFX leftBackMotor;
     private static final double SPEED_F_CONSTANT = 0.12;
 
     private static final int TIMEOUT_MS = 10;
-    private static final int MAX_TICKS_PER_SECOND = 200000;   //Plybot = 9000   -- 4960 ticks
-    private static final int TICKS_PER_FOOT = 9560;    //Plybot = 5270  
+    private static final int MAX_TICKS_PER_SECOND = 9000;   //Plybot = 9000   Sulfuric = 200000
+    private static final int TICKS_PER_FOOT = 5270;    //Plybot = 5270   Sulfuric = 9560
 
     //Motion Magic (all values still need to be changed, these are values for plybot)
     public double MotionMagicP = .8; 
