@@ -49,6 +49,8 @@ public class Index extends Command {
     protected void execute() {
         double yAxisVal = Robot.oi.buttonBox.getRawAxis(1);
         Robot.indexer.setPercentSpeedPID(yAxisVal);
+        //FIXME: Make this a better key on the smart dashboard. 
+        // Would at the very least recommend throwing in the class name (Index) to make it easy to find what's setting it
         SmartDashboard.putNumber("Y AXIS VAL", yAxisVal);
     }
 

@@ -51,6 +51,8 @@ public class RunIntake extends Command {
     protected void execute() {
         double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
         Robot.intake.setPercentSpeedPID(xAxisVal);
+        //FIXME: Need better name for smart dashboard value.
+        // Would recommend adding class name to quickly find this
         SmartDashboard.putNumber("X-Axis Value:" , xAxisVal);
     }
 

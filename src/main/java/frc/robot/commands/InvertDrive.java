@@ -37,6 +37,9 @@ public class InvertDrive extends InstantCommand {
     // Called once when this command runs
     @Override
     protected void initialize() {
+        // FIXME: Can just use a boolean NOT
+        // boolean currentReverseStatus = Robot.drivetrain.getReversed();
+        // Robot.drivetrain.setReversed(!currentReverseStatus);
         if(Robot.drivetrain.getReversed()==false)
         {
             Robot.drivetrain.setReversed(true);

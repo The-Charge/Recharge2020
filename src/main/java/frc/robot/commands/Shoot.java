@@ -48,6 +48,8 @@ public class Shoot extends Command {
         double xAxisVal = Robot.oi.buttonBox.getRawAxis(0);
         Robot.shooter.setPercentSpeedPID(xAxisVal);
        // Robot.shooter.run(m_speed);
+       // FIXME: Need a better smart dashboard key
+       // Would recommend throwing in class name
         SmartDashboard.putNumber("XAxisVal", xAxisVal);
         }
 

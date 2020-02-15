@@ -81,11 +81,12 @@ controlPanelMotor = new WPI_TalonSRX(11);
     controlPanelMotor.set(pow);
 }
 public void stop(){
-  controlPanelMotor.set(0);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+  run(0);
 }
 
 public void rotateX(){
-  SmartDashboard.putNumber("Counter", ctr);
+  
+  SmartDashboard.putNumber("Color Change Coonter", ctr);
   currentColor = Robot.colorSensor.getColorString();
   confidences = Robot.colorSensor.getConfidence();
   System.out.println(confidences);
@@ -94,9 +95,9 @@ public void rotateX(){
       controlPanelMotor.set(0.5);
     }
 
-    System.out.println("TEMP:" + temp + temp + temp + temp + temp);
-    System.out.println("CURRENT:" + currentColor + currentColor + currentColor + currentColor + currentColor);
-    System.out.println("Check:" + ctr);
+    SmartDashboard.putString("Temp Color", temp);
+    SmartDashboard.putString("Current", currentColor);
+    SmartDashboard.putNumber("Check", ctr);
 
     //everytime the color changes counter goes up
     if (currentColor!= temp && confidences>.935) {

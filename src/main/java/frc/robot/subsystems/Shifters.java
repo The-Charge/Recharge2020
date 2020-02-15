@@ -82,12 +82,12 @@ addChild("ShifterSolenoid",shifterSolenoid);
     }
     
     public boolean isLow(){
-        if (shifterSolenoid.get() == false) return true;
-        else return false;
+        return !shifterSolenoid.get();
     }
 	
 	public void writeDashboardDebugValues() {
-		SmartDashboard.putBoolean("High", !isLow());
+        // FIXME: Need better smart dashboard key (ie: throw in class name)
+		SmartDashboard.putBoolean("ShiftHigh", !isLow());
 	}
 }
 
