@@ -103,27 +103,27 @@ private WPI_TalonFX leftBackMotor;
 
 
 
-rightFrontMotor = new WPI_TalonFX(1);
+ rightFrontMotor = new WPI_TalonFX(1);
 
 
         
-rightMidMotor = new WPI_TalonFX(2);
+ rightMidMotor = new WPI_TalonFX(2);
 
 
         
-rightBackMotor = new WPI_TalonFX(3);
+ rightBackMotor = new WPI_TalonFX(3);
 
 
         
-leftFrontMotor = new WPI_TalonFX(4);
+ leftFrontMotor = new WPI_TalonFX(4);
 
 
         
-leftMidMotor = new WPI_TalonFX(5);
+ leftMidMotor = new WPI_TalonFX(5);
 
 
         
-leftBackMotor = new WPI_TalonFX(6);
+ leftBackMotor = new WPI_TalonFX(6);
 
         
 
