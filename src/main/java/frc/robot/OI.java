@@ -67,9 +67,9 @@ public Joystick buttonBox;
 buttonBox = new Joystick(2);
 
 climbDown = new JoystickButton(buttonBox, 6);
-climbDown.whileHeld(new ClimberSpeedMode(-0.5));
-climbUp = new JoystickButton(buttonBox, 1);
-climbUp.whileHeld(new ClimberSpeedMode(0.5));
+climbDown.whileHeld(new ClimberSpeedMode(0.5));
+climbUp = new JoystickButton(buttonBox, 5);
+climbUp.whileHeld(new ClimberSpeedMode(-0.5));
 shootBtn = new JoystickButton(buttonBox, 1);
 shootBtn.whileHeld(new Shoot(0));
 leftJoystick = new Joystick(1);

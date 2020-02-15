@@ -109,15 +109,14 @@ climberMotor = new WPI_TalonSRX(2);
     {
         climberMotor.set(ControlMode.Velocity, percentSpeed);
     }
-
+    public void setPercentVBus()
+    {
+        climberMotor.set(ControlMode.PercentOutput, 0);
+    }
     public void manual (double pow)
     {
         climberMotor.set(ControlMode.PercentOutput, pow);
     }
 
-
-    
-
-    
     }
 

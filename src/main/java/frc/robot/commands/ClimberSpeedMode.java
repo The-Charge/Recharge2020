@@ -39,14 +39,15 @@ public class ClimberSpeedMode extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        //Robot.climber.initSpeedMode();
-        Robot.climber.set(m_speed);
+        Robot.climber.initSpeedMode();
+        
+        //Robot.climber.setPercentVBus();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-       
+        Robot.climber.set(m_speed);
        //Robot.climber.manual(m_speed);
     }
 
