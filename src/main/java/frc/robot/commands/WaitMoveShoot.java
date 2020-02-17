@@ -12,6 +12,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.*;
 
 /**
@@ -33,7 +34,7 @@ public class WaitMoveShoot extends CommandGroup {
         //this will pause for 3 seconds to wait for other robots to clear
         //then move to position in front of port and shoot then move off line
 
-        //addSequential(new Wait(3));
+        new WaitCommand(3);
         addSequential(new TurnNDegreesAbsolute(90));
         addSequential(new DriveXFeetMM(6)); //needs to be tested to see if this is a good distance
         addSequential(new Shoot(0.4)); //speed needs to be tested for optimal shooting
