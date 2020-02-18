@@ -34,7 +34,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
  */
 public class Drivetrain extends Subsystem {
 
-
+/*
 private WPI_TalonFX rightFrontMotor;
 private WPI_TalonFX rightMidMotor;
 private WPI_TalonFX rightBackMotor;
@@ -42,18 +42,18 @@ private WPI_TalonFX leftFrontMotor;
 private WPI_TalonFX leftMidMotor;
 private WPI_TalonFX leftBackMotor;
 
+*/
 
 
 
-
-    /**Motors
+    
  	private WPI_TalonSRX rightFrontMotor;
     private WPI_TalonSRX rightMidMotor;
     private WPI_TalonSRX rightBackMotor;
     private WPI_TalonSRX leftFrontMotor;
     private WPI_TalonSRX leftMidMotor;
     private WPI_TalonSRX leftBackMotor;
-	*/
+	
     //TODO: PID Constants (all values still need to be changed, these are values for plybot)
     private static final double SPEED_P_CONSTANT = 0.25;
     private static final double SPEED_I_CONSTANT = 0.0001;   //lowered
@@ -103,27 +103,27 @@ private WPI_TalonFX leftBackMotor;
 
 
 
- rightFrontMotor = new WPI_TalonFX(1);
+ rightFrontMotor = new WPI_TalonSRX(1);
 
 
         
- rightMidMotor = new WPI_TalonFX(2);
+ rightMidMotor = new WPI_TalonSRX(2);
 
 
         
- rightBackMotor = new WPI_TalonFX(3);
+ rightBackMotor = new WPI_TalonSRX(3);
 
 
         
- leftFrontMotor = new WPI_TalonFX(4);
+ leftFrontMotor = new WPI_TalonSRX(4);
 
 
         
- leftMidMotor = new WPI_TalonFX(5);
+ leftMidMotor = new WPI_TalonSRX(5);
 
 
         
- leftBackMotor = new WPI_TalonFX(6);
+ leftBackMotor = new WPI_TalonSRX(6);
 
         
 
@@ -380,7 +380,4 @@ private WPI_TalonFX leftBackMotor;
     	leftFrontMotor.set(ControlMode.MotionMagic, MotionMagicDistance);
     	rightFrontMotor.set(ControlMode.MotionMagic, correctionR*MotionMagicDistance);
     }
-
-    
-
 }
