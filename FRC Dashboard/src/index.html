@@ -39,25 +39,47 @@
         </div> -->
 
         <div id="vision">
-            <div>
-
+            <div style="padding-top: 100px">
+                <div id="title-text" style="text-align: left">Vision Target:</div>
+                <div id="vision-target">FOUND</div>
+                
+                <svg style="margin-left: 170px; margin-top: -120px; height: 1000px">
+                    <circle id="vision-target" cx="80" cy="80" r="70"></circle>
+                    <circle id="vision-target" cx="80" cy="80" r="45"></circle>
+                    <circle id="vision-target" cx="80" cy="80" r="20"></circle>
+                </svg>
             </div>
         </div>
 
         <div id="climber">
             <div>
-                <input id="test-element" type="range" min="0" max="28000" value="770">
+                <input id="test-element" type="range" min="0" max="100" value="770">
+                <svg>
+                    <rect x="-20" y="30" width="200" height="15"></rect>
+                    <rect class="filled" x="85" y="150" width="25" height="150"></rect>
+                    <rect class="filled" id="climber" x="45" y="150" width="25" height="150"></rect>
+                    <circle id="climber" cx="57" cy="132" r="20"></circle>
+                </svg>
             </div>
         </div>
-        <div id="elevation"></div>
+
+        <div id="elevation">
+            <div>
+                <div id="big-number" style="padding-top: 25px; margin-left: 10px;">35°</div>
+                <svg style="margin-left: 10px; padding-top: 110px">
+                    <rect class="filled" x=10 width="120" height="5"></rect>
+                    <rect class="filled" id="turret-elevation" x=10 width="120" height="5" style="padding-left: 10px" transform="rotate(-66, -60, 0)"></rect>
+                </svg>
+            </div>
+        </div>
 
         <div id="gyro">
             <div>
                 <svg style="margin-left: 18px; padding-top: 50px">
                     <rect width="120" height="120"></rect>
-                    <rect id="robot-direction" x="30" y="0" width="60" height="40" style="fill: white;"></rect>
-                    <circle class="gyro-turret" cx="60" cy="60" r="40"></circle>
-                    <rect class="gyro-turret" id="turret-direction" x="53" y="21" width="15" height="20" style="fill: white;" transform="rotate(10, 0, 40)"></rect>
+                    <rect  class="filled" x="30" y="0" width="60" height="40"></rect>
+                    <circle cx="60" cy="60" r="40"></circle>
+                    <rect class="filled" id="turret-direction" x="52.5" y="20" width="15" height="19"></rect>
                 </svg>
             </div>
         </div>
@@ -69,7 +91,13 @@
                 <div id="robot-state">UNKNOWN</div>
 
                 <button id="connect-button">Connect</button>
-                <button id="test-button">Edit NetworkTables</button>
+                <hr>
+
+                <div id="title-text">Auton Select:</div>
+                <select id="auto-select" style="width: 157.5px;">
+                    <option>No auto modes found</option>
+                    <!-- This gets populated by JS -->
+                </select>
                 <hr>
 
                 <div id="title-text">Ball Count:</div>
@@ -81,10 +109,10 @@
                 <hr>
 
                 <div id="title-text">Indexer:</div>
-                <div class="on" id="indicator">ON</div>
+                <div class="on" id="indicator" style="font-size: 6vh">RUNNING</div>
                 <hr>
 
-                <div id="title-text", style="padding-top: 10%;">Cycle Time:</div>
+                <div id="title-text", style="padding-top: 5%;">Cycle Time:</div>
                 <div id="indicator", style="padding-top: 5%">0:00</div>
             </div>
 

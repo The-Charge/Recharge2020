@@ -34,6 +34,11 @@ text {
     stroke: var(--on);
     fill: var(--on);
 }
+.filled {
+    color: var(--main);
+    stroke: var(--main);
+    fill: var(--main);
+}
 
 /* Class Presets */
 .divider {

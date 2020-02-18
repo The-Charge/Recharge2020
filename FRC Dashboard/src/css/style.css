@@ -236,6 +236,7 @@ body.login #login {
 }
 
 #big-number {
+    font-family: monospace;
     font-size: 10vh;
     text-align: center;
 }
@@ -243,4 +244,9 @@ body.login #login {
 #indicator {
     font-size: 7vh;
     text-align: center;
+}
+
+#vision-target {
+    font-size: 7vh;
+    color: var(--on);
 }

@@ -8,13 +8,16 @@ let ui = {
         status: document.getElementById('camera-status'),
     },
     gyro: {
+        // turret: {
+        //     val: 0,
+        //     offset: 0,
+        //     visualVal: 0,
+        // },
+        // container: document.getElementById('gyro'),
         turret: {
-            val: 0,
-            offset: 0,
-            visualVal: 0,
-        },
-        container: document.getElementById('gyro'),
-        turret: document.getElementById('gyro-turret'),
+            marker: document.getElementById('turret-direction'),
+            value: 0,
+        }
     },
     test: document.getElementById('test-element'),
 };
@@ -23,6 +26,11 @@ let ui = {
 setInterval(() => {
     ui.camera.screen.style.backgroundImage = 'url("https://www.alimentarium.org/en/system/files/thumbnails/image/AL027-01_pomme_de_terre_0.jpg")';
 }, 1000);
+
+setInterval(() => {
+    ui.gyro.turret.value += 1;
+    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + ui.gyro.turret.value + ',0,30)');
+}, 1)
 
 // Update match timer
 NetworkTables.addKeyListener('/robot/time', (key, value) => {
@@ -36,15 +44,6 @@ addEventListener('error',(ev)=>{
 
 //Event Listeners:
 
-// Gyro rotation
-let updateGyro = (key, value) => {
-    ui.gyro.val = value;
-    ui.gyro.visualVal = Math.floor(ui.gyro.val - ui.gyro.offset);
-    ui.gyro.visualVal %= 360;
-    if (ui.gyro.visualVal < 0) {
-        ui.gyro.visualVal += 360;
-    }
-
-    ui.gyro.arm.style.transform = `rotate(${ui.gyro.visualVal}deg)`;
-};
-NetworkTables.addKeyListener('/SmartDashboard/Yaw', updateGyro);
+NetworkTables.addKeyListener('/SmartDashboard/turret_rotation', (key, value) => {
+    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
+})
