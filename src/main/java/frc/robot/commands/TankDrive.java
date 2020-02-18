@@ -13,6 +13,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.MathUtil;
 import frc.robot.Robot;
+import frc.robot.subsystems.Drivetrain;
 
 /**
  *
@@ -46,16 +47,14 @@ public class TankDrive extends Command {
     @Override
     protected void execute() {
         double leftSpeed, rightSpeed;
-        rightSpeed = -Robot.oi.rightJoystick.getY();
-        leftSpeed = -Robot.oi.leftJoystick.getY();
+        rightSpeed = Robot.oi.rightJoystick.getY();
+        leftSpeed = Robot.oi.leftJoystick.getY();
 
         rightSpeed = MathUtil.adjSpeed(rightSpeed);
         leftSpeed = MathUtil.adjSpeed(leftSpeed);
 
 
-
         Robot.drivetrain.run(leftSpeed, rightSpeed);
-  
     }
 
     // Make this return true when this Command no longer needs to run execute()
