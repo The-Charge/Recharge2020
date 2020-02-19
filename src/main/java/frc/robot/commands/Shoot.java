@@ -40,6 +40,7 @@ public class Shoot extends Command {
     @Override
     protected void initialize() {
         Robot.shooter.initSpeedMode();
+
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -51,7 +52,14 @@ public class Shoot extends Command {
        // FIXME: Need a better smart dashboard key
        // Would recommend throwing in class name
         SmartDashboard.putNumber("XAxisVal", xAxisVal);
+
+        if (Robot.shooter.getCurrentSpeed() == xAxisVal)
+        {
+            Robot.shooter.deactivateStopper();
         }
+       
+
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
@@ -63,6 +71,7 @@ public class Shoot extends Command {
     @Override
     protected void end() {
         Robot.shooter.stop();
+        Robot.shooter.activateStopper();
     }
 
     // Called when another command which requires one or more of the same

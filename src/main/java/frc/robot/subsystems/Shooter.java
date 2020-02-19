@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.Solenoid;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -35,7 +36,7 @@ public class Shooter extends Subsystem {
 
     
 private WPI_TalonFX motorShooter;
-
+private Solenoid stopperSolenoid;
 //set to use TalonSRX for testing, will later change to TalonFX 
                                  //in robotbuilder   
 
@@ -67,7 +68,7 @@ private WPI_TalonFX motorShooter;
     //rightMotorShooter = new WPI_TalonSRX(8);
 
     motorShooter = new WPI_TalonFX(8);
-
+    stopperSolenoid = new Solenoid(3);
     }
 
     @Override
@@ -79,6 +80,8 @@ private WPI_TalonFX motorShooter;
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
+
+        stopperSolenoid.set(true);
     }
 
     @Override
@@ -130,6 +133,18 @@ private WPI_TalonFX motorShooter;
 
     public int getTicksPerSecondRight(){
         return motorShooter.getSelectedSensorVelocity();
+    }
+
+    public double getCurrentSpeed(){
+        return motorShooter.getSelectedSensorVelocity();
+    }
+
+    public void deactivateStopper(){
+        stopperSolenoid.set(false);
+    }
+
+    public void activateStopper(){
+        stopperSolenoid.set(true);
     }
 }
 
