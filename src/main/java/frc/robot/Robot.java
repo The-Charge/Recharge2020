@@ -8,9 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.geometry.Pose2d;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -66,7 +70,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    m_robotContainer.m_robotDrive.resetEncoders();
+    m_robotContainer.m_robotDrive.resetOdometry(new Pose2d(0, 0, new Rotation2d(0)));
+    //m_robotContainer.m_robotDrive.zeroHeading();
+    //new SequentialCommandGroup(m_robotContainer.getAutonomousCommand(), m_robotContainer.getAutonomousCommand2());
+    m_autonomousCommand = new SequentialCommandGroup(m_robotContainer.getAutonomousCommand(), m_robotContainer.getAutonomousCommand2());
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -89,6 +97,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     SmartDashboard.putNumber("Left Encoder", m_robotContainer.m_robotDrive.leftFrontMotor.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("Right Encoder", m_robotContainer.m_robotDrive.rightFrontMotor.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("Gyro Reading", m_robotContainer.m_robotDrive.getHeading());
     //SmartDashboard.putData("", m_robotContainer.m_robotDrive.getPose());
     //SmartDashboard.putNumber("Left Encoder", System.currentTimeMillis());
   }

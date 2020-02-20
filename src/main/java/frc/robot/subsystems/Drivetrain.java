@@ -80,16 +80,16 @@ public class Drivetrain extends SubsystemBase {
     //m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
     //leftFrontMotor.setInverted(false);
     //leftFrontMotor.setSensorPhase(false);
-    //leftFrontMotor.setNeutralMode(NeutralMode.Brake);
+    leftFrontMotor.setNeutralMode(NeutralMode.Brake);
     //rightFrontMotor.setInverted(false);
     //rightFrontMotor.setSensorPhase(true);
-    //rightFrontMotor.setNeutralMode(NeutralMode.Brake);
+    rightFrontMotor.setNeutralMode(NeutralMode.Brake);
     //leftBackMotor.setInverted(false);
     //leftBackMotor.follow(leftFrontMotor);
-    //leftBackMotor.setNeutralMode(NeutralMode.Brake);
+    leftBackMotor.setNeutralMode(NeutralMode.Brake);
     //rightBackMotor.setInverted(false);
     //rightBackMotor.follow(rightFrontMotor);
-    //rightBackMotor.setNeutralMode(NeutralMode.Brake);
+    rightBackMotor.setNeutralMode(NeutralMode.Brake);
     
     resetEncoders();
 
