@@ -73,9 +73,9 @@ public class RunTurretVision extends Command {
         verticalAngle = visionResults[4];
         alignmentAngle = visionResults[5];
 
-        Robot.turret.setAngleRelative(horizontalAngle);
+        Robot.turret.setHorizontalAngleRelative(horizontalAngle);
 
-        if (Robot.turret.atAngle(horizontalAngle)) {
+        if (Robot.turret.atHorizontalAngle(horizontalAngle)) {
             if (alignmentAngle < ALIGNMENT_RANGE_INNER) {
                 SmartDashboard.putString("Vision/valid_shot", "inner");
             } else if (alignmentAngle < ALIGNMENT_RANGE_OUTER) {
@@ -97,7 +97,7 @@ public class RunTurretVision extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.turret.stop();
+        Robot.turret.stopHorizontal();
     }
 
     // Called when another command which requires one or more of the same

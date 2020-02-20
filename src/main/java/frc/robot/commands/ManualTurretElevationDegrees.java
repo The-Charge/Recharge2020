@@ -47,7 +47,6 @@ public class ManualTurretElevationDegrees extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-
         //This makes sure the sent angle is within doable range
         if(m_targetAngle > MAX_ANGLE)
             m_targetAngle = MAX_ANGLE;
