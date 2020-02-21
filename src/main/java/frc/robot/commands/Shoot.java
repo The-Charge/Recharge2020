@@ -11,6 +11,7 @@
 
 package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
@@ -74,6 +75,9 @@ public class Shoot extends Command {
         if (!Robot.ballSensor.ballSensed())
         {
             Robot.shooter.activateStopper();
+        }
+        else{
+            
         }
     }
 
