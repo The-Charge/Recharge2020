@@ -35,12 +35,12 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 public class Drivetrain extends Subsystem {
 
 
-private WPI_TalonFX rightFrontMotor;
-private WPI_TalonFX rightMidMotor;
-private WPI_TalonFX rightBackMotor;
-private WPI_TalonFX leftFrontMotor;
-private WPI_TalonFX leftMidMotor;
-private WPI_TalonFX leftBackMotor;
+public WPI_TalonFX rightFrontMotor;
+public WPI_TalonFX rightMidMotor;
+public WPI_TalonFX rightBackMotor;
+public WPI_TalonFX leftFrontMotor;
+public WPI_TalonFX leftMidMotor;
+public WPI_TalonFX leftBackMotor;
 
 
 
@@ -381,6 +381,15 @@ private WPI_TalonFX leftBackMotor;
     	rightFrontMotor.set(ControlMode.MotionMagic, correctionR*MotionMagicDistance);
     }
 
+ 
     
+    public boolean checkTemp()
+    {
+        if (rightFrontMotor.getTemperature()> 25 || rightMidMotor.getTemperature()> 25 || rightBackMotor.getTemperature()> 25 || leftFrontMotor.getTemperature()> 25 || leftMidMotor.getTemperature()> 25 || leftBackMotor.getTemperature()> 25)
+            return true;
+        else
+            return false;
+    }
+
 
 }

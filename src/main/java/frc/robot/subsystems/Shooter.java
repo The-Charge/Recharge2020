@@ -131,5 +131,13 @@ private WPI_TalonFX motorShooter;
     public int getTicksPerSecondRight(){
         return motorShooter.getSelectedSensorVelocity();
     }
+
+    public boolean checkTemp()
+    {
+        if (motorShooter.getTemperature() > 25)
+            return true;
+        else
+            return false;
+    }
 }
 
