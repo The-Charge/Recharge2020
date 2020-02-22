@@ -16,51 +16,46 @@
 
         <div id="camera" style="box-shadow: 3px -6px #ff0000; animation-name: camera-color;"></div> 
 
-        <!-- <div id="auton">
-            <div>
-                <select id="auton-select">
-                    <option>No auton modes found</option>
-                </select>
-            </div>
-        </div> -->
-
         <div id="vision">
             <div style="padding-top: 100px">
                 <div id="title-text" style="text-align: left; padding-left: 10px;">Vision Target:</div>
                 <div id="vision-target" style="padding-left: 10px;">FOUND</div>
                 
                 <svg style="margin-left: 170px; margin-top: -120px; height: 1000px">
-                    <circle id="vision-target-none" cx="80" cy="80" r="70"></circle>
+                    <circle id="vision-target-found" cx="80" cy="80" r="70"></circle>
                     <circle id="vision-target-moving" cx="80" cy="80" r="45"></circle>
-                    <circle id="vision-target-found" cx="80" cy="80" r="20"></circle>
+                    <circle id="vision-target-none" cx="80" cy="80" r="20"></circle>
                 </svg>
             </div>
         </div>
 
         <div id="climber">
             <div>
-                <input id="test-element" type="range" min="1" max="20" value="10">
+                <input id="test-element-climber" type="range" min="0" max="100" value="0">
                 <svg>
                     <rect x="-20" y="30" width="200" height="15"></rect>
-                    <rect class="filled" x="85" y="150" width="25" height="150"></rect>
-                    <rect class="filled" id="climb-arm" x="45" y="150" width="25" height="150"></rect>
-                    <circle id="climb-arm" cx="57" cy="132" r="20"></circle>
+                    <rect class="filled" x="85" y="150" width="15" height="150"></rect>
+                    <rect class="filled" id="climb-arm" x="50" y="150" width="15" height="150"></rect>
+                    <circle id="climb-top" cx="57" cy="132" r="20"></circle>
                 </svg>
             </div>
         </div>
 
         <div id="elevation">
             <div>
-                <div id="big-number" style="padding-top: 25px; margin-left: 10px;">35°</div>
+                <input id="test-element-elevation" type="range" min="0" max="90" value="0">
+                <div id="elevation-number" class="big-number" style="padding-top: 25px; margin-left: 15px;">0°</div>
                 <svg style="margin-left: 10px; padding-top: 110px">
                     <rect class="filled" x=10 width="120" height="5"></rect>
-                    <rect class="filled" id="turret-elevation" x=10 width="120" height="5" style="padding-left: 10px" transform="rotate(-66, -60, 0)"></rect>
+                    <rect class="filled" id="turret-elevation" x=10 width="120" height="5" style="padding-left: 10px" transform="rotate(0, -60, 0)"></rect>
                 </svg>
             </div>
         </div>
 
         <div id="gyro">
             <div>
+                <input id="test-element" type="range" min="0" max="2" value="0">
+                
                 <svg style="margin-left: 18px; padding-top: 50px">
                     <rect width="120" height="120"></rect>
                     <rect  class="filled" x="30" y="0" width="60" height="40"></rect>
@@ -72,7 +67,6 @@
         
         <div id="side">
             <div>
-                
                 <div style="color:#999">Robot State:</div>
                 <div id="robot-state">UNKNOWN</div>
 
@@ -87,55 +81,36 @@
                 <hr>
 
                 <div id="title-text">Ball Count:</div>
-                <div id="big-number">5</div>
+                <div class="big-number" id="ball-count">3</div>
                 <hr>
                 
-                <div id="title-text">Control Panel:</div>
-                <div id="indicator">STATUS</div>
-                <hr>
+                <!-- <div id="title-text">Control Panel:</div>
+                <div class="indicator" id="control-panel">NONE</div>
+                <hr> -->
 
                 <div id="title-text">Indexer:</div>
-                <div class="on" id="indicator" style="font-size: 6vh">RUNNING</div>
+                <div id="indexer-text" class="on" class="indicator" style="font-size: 6vh; padding-left: 5px">RUNNING</div>
                 <hr>
 
                 <div id="title-text", style="padding-top: 5%;">Cycle Time:</div>
-                <div id="indicator", style="padding-top: 5%">0:00</div>
-            </div>
+                <div class="indicator", style="padding-top: 5%">0:00</div>
+                <hr>
 
+                <div>
+                    <div id="team-number-shadow">2619</div>
+                    <div id="team-number">2619</div>
+                </div>
+                
+            </div>
         </div>
 
         <div id="driver-info">
             <div>
                 <div id="title-text", style="font-size: 7vh; text-align: left; margin-left: 65px; padding-top: 25px; display: inline-block">Gear: ​ ​</div>
-                <div class="on" id="indicator", style="padding-bottom: 50px; text-align: right; display: inline-block">HIGH</div>
+                <div id="gear" class="on indicator", style="padding-bottom: 50px; text-align: right; display: inline-block">HIGH</div>
             </div>
         </div>
 
-        <!-- <div id="side">
-            <div>
-                <svg>
-                    <circle id="ammo1" cx="30" cy="30" r="20"/>
-                    <circle id="ammo2" cx="30" cy="80" r="20"/>
-                    <circle id="ammo3" cx="30" cy="130" r="20"/>
-                    <circle id="ammo4" cx="30" cy="180" r="20"/>
-                    <circle id="ammo5" cx="30" cy="230" r="20"/>
-                    <line class="divider" x1="70" y1="10" x2="70" y2="250"/>
-                    <text class="on" id="target-label" x="230" y="40">INNER PORT</text>
-                    <line class="divider" x1="10" y1="275" x2="400" y2="275"/>
-                </svg>
-            </div>
-        </div> -->
-
-        <!-- <div id="buttons">
-            <div>
-                <svg>
-                    <circle cx="50" cy="45" r="40"></circle>
-                </svg>
-            </div>
-        </div>
-
-        <div id="gyro"></div>
-        <div id="other"></div> -->
     </div>
 
 

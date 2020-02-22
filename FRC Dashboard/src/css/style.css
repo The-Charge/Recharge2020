@@ -285,13 +285,13 @@ body.login #login {
     text-align: center;
 }
 
-#big-number {
+.big-number {
     font-family: monospace;
     font-size: 10vh;
     text-align: center;
 }
 
-#indicator {
+.indicator {
     font-size: 7vh;
     text-align: center;
 }
@@ -314,4 +314,26 @@ body.login #login {
 #vision-target-found {
     fill: var(--on);
     stroke: var(--on);
+}
+
+
+#team-number-shadow {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    padding-top: 10px;
+    padding-left: 12%;
+    color: var(--shadow);
+    font-size: 10vh;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+#team-number {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 12%;
+    color: rgb(40, 140, 20);
+    font-size: 10vh;
+    font-family: sans-serif;
+    font-weight: bold;
 }
