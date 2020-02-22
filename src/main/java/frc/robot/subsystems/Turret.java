@@ -94,9 +94,13 @@ public class Turret extends Subsystem {
     }
 
     private double calcActuatorDistance(double angle) {
+        // Running law of cosines on the turret
         double d = Math.sqrt(Math.pow(Turret.TURRET_SIDE_A, 2) + Math.pow(Turret.TURRET_SIDE_B, 2) - 2 * Turret.TURRET_SIDE_A * Turret.TURRET_SIDE_B * Math.cos(Math.toRadians(94.4 - angle)));
-        d -= 218;
-        d /= 140;
+    
+        // This line subtracts the length of the actuator while not extended
+        d -= 218;  // 218 is what the actuator blueprints says is the "Closed Length (hole to hole)"
+        // This line changes the normalization from 0-140 to 0-1
+        d /= 140;  // 140 is what the actuator blueprints says is the max the actuator can extend from the base
         return d;
     }
 
@@ -109,6 +113,12 @@ public class Turret extends Subsystem {
         
         actuatorDistance = calcActuatorDistance(setpoint);
         elevationServo.set(actuatorDistance);
+    }
+
+    public void setRawVertical(double setpoint) {
+        setpoint *= 0.6;
+        setpoint += 0.2;
+        elevationServo.set(setpoint);
     }
 
     public boolean atVerticalAngle(double angle) {
@@ -131,12 +141,8 @@ public class Turret extends Subsystem {
 	public void setHorizontalAngleRelative(double setpoint) {
         setHorizontalAngleAbsolute(setpoint + getHorizontalAngle());
     }
-
-	public Servo getElevationServo() {
-        return elevationServo;
-    }
     
-    public void runManual(double percent) {
+    public void runHorizontalManual(double percent) {
         int ticks = turretMotor.getSelectedSensorPosition();
         if ((ticks < H_MIN_ENCODER_TICKS && percent < 0) || (ticks > H_MAX_ENCODER_TICKS && percent > 0)) {
             stopHorizontal();
