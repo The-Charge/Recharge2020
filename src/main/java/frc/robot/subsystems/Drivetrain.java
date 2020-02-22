@@ -68,7 +68,7 @@ public class Drivetrain extends SubsystemBase {
       private final AHRS m_gyro = new AHRS(Port.kMXP);
 
   // Odometry class for tracking robot pose
-      private final DifferentialDriveOdometry m_odometry;
+      public final DifferentialDriveOdometry m_odometry;
 
   /**
    * Creates a new DriveSubsystem.
@@ -80,16 +80,16 @@ public class Drivetrain extends SubsystemBase {
     //m_rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
     //leftFrontMotor.setInverted(false);
     //leftFrontMotor.setSensorPhase(false);
-    leftFrontMotor.setNeutralMode(NeutralMode.Brake);
+    //leftFrontMotor.setNeutralMode(NeutralMode.Brake);
     //rightFrontMotor.setInverted(false);
     //rightFrontMotor.setSensorPhase(true);
-    rightFrontMotor.setNeutralMode(NeutralMode.Brake);
+    //rightFrontMotor.setNeutralMode(NeutralMode.Brake);
     //leftBackMotor.setInverted(false);
     //leftBackMotor.follow(leftFrontMotor);
-    leftBackMotor.setNeutralMode(NeutralMode.Brake);
+   //leftBackMotor.setNeutralMode(NeutralMode.Brake);
     //rightBackMotor.setInverted(false);
     //rightBackMotor.follow(rightFrontMotor);
-    rightBackMotor.setNeutralMode(NeutralMode.Brake);
+    //rightBackMotor.setNeutralMode(NeutralMode.Brake);
     
     resetEncoders();
 
@@ -160,6 +160,11 @@ public class Drivetrain extends SubsystemBase {
   public void resetEncoders() {
     leftFrontMotor.setSelectedSensorPosition(0);
     rightFrontMotor.setSelectedSensorPosition(0);
+  }
+
+  public void setEncoders(int left, int right) {
+    leftFrontMotor.setSelectedSensorPosition(left);
+    rightFrontMotor.setSelectedSensorPosition(right);
   }
 
   /**

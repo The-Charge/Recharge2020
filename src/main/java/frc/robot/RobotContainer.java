@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.geometry.Transform2d;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
@@ -116,25 +117,29 @@ public class RobotContainer {
 
 
     
+
+    /*
     
     Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
         // Start at the origin facing the +X direction
         new Pose2d(0, 0, new Rotation2d(0)),
         // Pass through these two interior waypoints, making an 's' curve path
         List.of(
-          //new Translation2d(-2, 0)
-          //new Translation2d(5, -1),
+          new Translation2d(1, 0)
+          //new Translation2d(2, 0)
           //new Translation2d(5, -1)
         ),
         // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(2, 0, new Rotation2d(0)),
+        new Pose2d(1.4, 2, new Rotation2d(Math.PI/3.25)),
         // Pass config
         config
     );
 
+    */
+
+    
     /*
-
-
+    
     
     String trajectoryJSON = "paths/Example.wpilib.json";
     Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
@@ -149,22 +154,17 @@ public class RobotContainer {
       // Pass config
       config
   );
+
+  */
   
     try{
-
+      
+      String trajectoryJSON = "paths/Backwards.wpilib.json";
     Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
-    exampleTrajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
-    System.out.println("INside try");
-    }
-    catch (IOException ex)
-    {
-      DriverStation.reportError("Unable to open trajectory", ex.getStackTrace());
-      System.out.println("Inside Catch");
-    }
-    
-*/
-
-
+    Trajectory exampleTrajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
+    System.out.println(exampleTrajectory);
+    exampleTrajectory = exampleTrajectory.transformBy(new Transform2d(new Pose2d(0, 0, new Rotation2d(0)), new Pose2d(-3, 5, new Rotation2d(0))));
+    System.out.println(exampleTrajectory);
     RamseteCommand ramseteCommand = new RamseteCommand(
         exampleTrajectory,
         m_robotDrive::getPose,
@@ -183,6 +183,17 @@ public class RobotContainer {
 
     // Run path following command, then stop at the end.
     return ramseteCommand.andThen(() -> m_robotDrive.tankDriveVolts(0, 0));
+    }
+    catch (IOException ex)
+    {
+      DriverStation.reportError("Unable to open trajectory", ex.getStackTrace());
+      System.out.println("Inside Catch");
+    }
+    
+
+
+
+    return null;
   }
 
   public Command getAutonomousCommand2() {
@@ -209,20 +220,20 @@ public class RobotContainer {
 
     // An example trajectory to follow.  All units in meters.
 
-    config.setReversed(true);
+    //config.setReversed(true);
     
     
     Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
         // Start at the origin facing the +X direction
-        new Pose2d(2, 0, new Rotation2d(0)),
+        new Pose2d(1.4, 2, new Rotation2d(Math.PI/3.25)),
         // Pass through these two interior waypoints, making an 's' curve path
         List.of(
-          //new Translation2d(-2, 0)
+          //new Translation2d(3, 0)
           //new Translation2d(5, -1),
           //new Translation2d(5, -1)
         ),
         // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(0, 0, new Rotation2d(0)),
+        new Pose2d(3, 0, new Rotation2d(0)),
         // Pass config
         config
     );
