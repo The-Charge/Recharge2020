@@ -95,6 +95,43 @@ hr {
     } */
 }
 
+@keyframes camera-color {
+    12.5% {
+        box-shadow: 3px -6px #ff0000;
+    }
+    25% {
+        box-shadow: 3px -6px #ffa500;
+    }
+    37.5% {
+        box-shadow: 3px -6px #ffff00;
+    }
+    50% {
+        box-shadow: 3px -6px #7fff00;
+    }
+    62.5% {
+        box-shadow: 3px -6px #00ffff;
+    }
+    75% {
+        box-shadow: 3px -6px #0000ff;
+    }
+    87.5% {
+        box-shadow: 3px -6px #9932cc;
+    }
+    /* 100% {
+        box-shadow: 3px -6px #ff0000;
+    } */
+
+    /* 25% {
+        box-shadow: 3px -6px rgb(255, 255, 0);
+    }
+    50% {
+        box-shadow: 3px -6px rgb(255, 255, 0);
+    }
+    75% {
+        box-shadow: 3px -6px rgb(0, 118, 40);
+    } */
+}
+
 .grid-container > div {
     box-shadow: 3px 6px #ff0000;
     /* box-shadow: 3px 6px #d4ab08; */
@@ -181,11 +218,24 @@ hr {
     grid-area: buttons;
 }
 
+#camera:before {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+}
 #camera {
     grid-area: cam1;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+    /* -webkit-transform: "rotate(90)"; */
+    /* background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg") 0 0 no-repeat; */
 }
+
 #camera-label {
     padding: 3px;
     font-family: monospace;
@@ -249,4 +299,19 @@ body.login #login {
 #vision-target {
     font-size: 7vh;
     color: var(--on);
+}
+
+#vision-target-none {
+    fill: var(--off);
+    stroke: var(--off);
+}
+
+#vision-target-moving {
+    fill: var(--medium);
+    stroke: var(--medium);
+}
+
+#vision-target-found {
+    fill: var(--on);
+    stroke: var(--on);
 }

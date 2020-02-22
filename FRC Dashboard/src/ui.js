@@ -19,18 +19,32 @@ let ui = {
             value: 0,
         }
     },
+    climber: {
+        slider: document.getElementById('test-element'),
+        arm: document.getElementById('climb-arm'),
+    },
     test: document.getElementById('test-element'),
 };
 
 // Update camera every second
 setInterval(() => {
-    ui.camera.screen.style.backgroundImage = 'url("https://www.alimentarium.org/en/system/files/thumbnails/image/AL027-01_pomme_de_terre_0.jpg")';
+    ui.camera.screen.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
 }, 1000);
 
 setInterval(() => {
     ui.gyro.turret.value += 1;
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + ui.gyro.turret.value + ',0,30)');
 }, 1)
+
+setInterval(() => {
+    var value = ui.climber.slider.getAttribute('value');
+
+    ui.climber.arm.setAttribute('cx', 57 + value);
+}, 1)
+
+ui.climber.slider.oninput = function() {
+    NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
+}
 
 // Update match timer
 NetworkTables.addKeyListener('/robot/time', (key, value) => {
@@ -46,4 +60,8 @@ addEventListener('error',(ev)=>{
 
 NetworkTables.addKeyListener('/SmartDashboard/turret_rotation', (key, value) => {
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
+})
+
+NetworkTables.addKeyListener('/SmartDashboard/', (key, value) => {
+
 })
