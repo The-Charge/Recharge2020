@@ -133,11 +133,11 @@ hr {
 }
 
 .grid-container > div {
-    box-shadow: 3px 6px #ff0000;
+    /* box-shadow: 3px 6px #ff0000; */
     /* box-shadow: 3px 6px #d4ab08; */
-    /* box-shadow: 3px 6px rgb(0, 118, 40); */
+    box-shadow: 3px 6px rgb(0, 118, 40);
     background-color: var(--background);
-    animation-name: color;
+    /* animation-name: color; */
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -187,8 +187,6 @@ hr {
     font-size: 17vh;
     grid-area: timer;
     text-align: center;
-    /* Use this padding and font-size: 13vh if timer is only one grid tile */
-    /* padding: 20px 0; */
 }
 
 #gyro {
@@ -296,6 +294,20 @@ body.login #login {
     text-align: center;
 }
 
+/* Other UI Elements */
+
+.side-bar {
+    padding-top: 5%;
+    /* padding-bottom: 5%; */
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.guide-line {
+    stroke-width: 1;
+    stroke-dasharray: 8, 8;
+}
+
 #vision-target {
     font-size: 7vh;
     color: var(--on);
@@ -316,13 +328,12 @@ body.login #login {
     stroke: var(--on);
 }
 
-
 #team-number-shadow {
     position: absolute;
     top: 3px;
     left: 2px;
     padding-top: 10px;
-    padding-left: 12%;
+    padding-left: 18%;
     color: var(--shadow);
     font-size: 10vh;
     font-family: sans-serif;
@@ -331,9 +342,10 @@ body.login #login {
 #team-number {
     position: absolute;
     padding-top: 10px;
-    padding-left: 12%;
+    padding-left: 18%;
     color: rgb(40, 140, 20);
     font-size: 10vh;
     font-family: sans-serif;
     font-weight: bold;
 }
+

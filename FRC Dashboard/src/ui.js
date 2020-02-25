@@ -139,7 +139,6 @@ NetworkTables.addKeyListener('/SmartDashboard/Gear', (key, value) => {
         ui.gearText.innerHTML = 'LOW';
         ui.gearText.color = 'red';
     }
-
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Indexer', (key, value) => {
