@@ -59,9 +59,7 @@ public class BallDetector extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {   
-        
-        BallSensor ball = new BallSensor();
-         ball.setBallsgained();
+         Robot.ballSensor.setBallsgained();
     
        }
 
