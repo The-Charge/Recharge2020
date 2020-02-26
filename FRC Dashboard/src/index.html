@@ -19,18 +19,23 @@
 
         <div id="vision">
             <div>
-                <div id="title-text" style="text-align: left; padding-left: 35px; padding-top: 55px;">Vision Target:</div>
+                <!-- The Text -->
+                <div class="title-text" style="text-align: left; padding-left: 35px; padding-top: 35px;">Vision Target:</div>
                 <div id="vision-target" style="padding-left: 35px;">FOUND</div>
                 
-                <svg style="margin-left: 170px; margin-top: -85px; height: 200px">
+                <!-- The Target -->
+                <svg style="margin-left: 170px; margin-top: -70px; height: 200px">
                     <circle id="vision-target-found" cx="120" cy="80" r="70"></circle>
                     <circle id="vision-target-moving" cx="120" cy="80" r="45"></circle>
                     <circle id="vision-target-none" cx="120" cy="80" r="20"></circle>
                 </svg>
-                <svg style="margin-left: 20px; margin-top: -120px; height:">
-                    <!--THE ARROWS-->
-                    <polygon points="20,50 60,10 60,30 140,30 140,70 60,70 60,90" class="off"/>
+                <svg style="margin-top: -135px;">
+                    <!-- The Arrows -->
+                    <polygon points="60,90 20,50 60,10 60,30 140,30 140,70 60,70" class="off" id="left-arrow"/>
+                    <polygon points="60,30 140,30 140,10 180,50 140,90 140,70 60,70" class="off" id="right-arrow"/>
                 </svg>
+
+                <div id="vision-degrees" class="big-number" style="margin-left: -190px; margin-top: -202px; font-family: sans-serif;">0º</div>
             </div>
         </div>
 
@@ -53,7 +58,7 @@
 
         <div id="elevation">
             <div>
-                <input id="test-element-elevation" type="range" min="0" max="90" value="0">
+                <input id="test-element-elevation" type="range" min="-100" max="100" value="0">
                 <div id="elevation-number" class="big-number" style="padding-top: 25px; margin-left: 15px;">0°</div>
                 <svg style="margin-left: 10px; padding-top: 110px">
                     <rect class="filled" x=10 width="120" height="5"></rect>
@@ -64,7 +69,7 @@
 
         <div id="gyro">
             <div>
-                <input id="test-element" type="range" min="0" max="2" value="0">
+                <input id="test-element" type="number">
                 
                 <svg style="margin-left: 18px; padding-top: 50px">
                     <rect width="120" height="120"></rect>
@@ -83,22 +88,22 @@
                 <button id="connect-button">Connect</button>
                 <hr>
 
-                <div id="title-text" class="side-bar">Auton Select:</div>
+                <div class="title-text" class="side-bar">Auton Select:</div>
                 <select id="auto-select" class="side-bar" style="width: 180px;">
                     <option>No auto modes found</option>
                     <!-- This gets populated by JS -->
                 </select>
                 <hr>
 
-                <div id="title-text" class="side-bar">Ball Count:</div>
+                <div class="title-text" class="side-bar">Ball Count:</div>
                 <div class="big-number" id="ball-count" class="side-bar">3</div>
                 <hr>
                 
-                <!-- <div id="title-text">Control Panel:</div>
+                <!-- <div class="title-text">Control Panel:</div>
                 <div class="indicator" id="control-panel">NONE</div>
                 <hr> -->
 
-                <div id="title-text" class="side-bar">Indexer:</div>
+                <div class="title-text" class="side-bar">Indexer:</div>
                 <div id="indexer-text" class="on" class="indicator side-bar" style="font-size: 6vh; padding-left: 18px">RUNNING</div>
                 <hr>
 
@@ -112,7 +117,7 @@
 
         <div id="driver-info">
             <div>
-                <div id="title-text", style="font-size: 7vh; text-align: left; margin-left: 65px; padding-top: 25px; display: inline-block">Gear: ​</div>
+                <div class="title-text", style="font-size: 7vh; text-align: left; margin-left: 65px; padding-top: 25px; display: inline-block">Gear: ​</div>
                 <div id="gear" class="on indicator", style="padding-bottom: 50px; text-align: right; display: inline-block; font-weight: bold;">HIGH</div>
             </div>
         </div>

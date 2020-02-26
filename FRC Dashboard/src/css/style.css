@@ -277,7 +277,7 @@ body.login #login {
 }
 
 /* Text CSS */
-#title-text {
+.title-text {
     font-size: 4vh;
     color: var(--text);
     text-align: center;

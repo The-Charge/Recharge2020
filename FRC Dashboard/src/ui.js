@@ -34,6 +34,9 @@ let ui = {
         found: document.getElementById('vision-target-found'),
         moving: document.getElementById('vision-target-moving'),
         none: document.getElementById('vision-target-none'),
+        leftArrow: document.getElementById('left-arrow'),
+        rightArrow: document.getElementById('right-arrow'),
+        degreeNumber: document.getElementById('vision-degrees'),
     },
     gearText: document.getElementById('gear'),
     indexerText: document.getElementById('indexer-text'),
@@ -55,12 +58,6 @@ setInterval(() => {
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + ui.gyro.turret.value + ',0,30)');
 }, 1)
 
-setInterval(() => {
-    var value = ui.climber.slider.getAttribute('value');
-
-    ui.climber.arm.setAttribute('cx', 57 + value);
-}, 1)
-
 ui.climber.slider.oninput = function() {
     NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
 }
@@ -70,7 +67,7 @@ ui.elevation.slider.oninput = function() {
 }
 
 ui.testInput.oninput = function() {
-    NetworkTables.putValue('/SmartDashboard/Vision', parseInt(this.value));
+    NetworkTables.putValue('/SmartDashboard/TurnDirection', parseInt(this.value));
 }
 
 // Update match timer
@@ -85,8 +82,26 @@ addEventListener('error',(ev)=>{
 
 //Event Listeners:
 
+NetworkTables.addKeyListener('/SmartDashboard/current_camera', (key, value) => {
+    if(value == true) {
+        ui.camera.screen.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
+    } else {
+        ui.camera.screen.style.backgroundImage = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+    }
+});
+
 NetworkTables.addKeyListener('/SmartDashboard/turret_rotation', (key, value) => {
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/vision_error', (key, value) => {
+    if(value == true) {
+        ui.vision.leftArrow.classList.add('on');
+        ui.vision.rightArrow.classList.add('on');
+    } else {
+        ui.vision.leftArrow.classList.add('off');
+        ui.vision.rightArrow.classList.add('off');
+    }
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Climber Elevation', (key, value) => {
@@ -111,7 +126,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Ball Count', (key, value) => {
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Vision', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/VisionFound', (key, value) => {
     //0 is none, 1 is moving, 2 is found
     if(parseInt(value) == 0) {
         ui.vision.text.innerHTML = 'NONE';
@@ -148,6 +163,25 @@ NetworkTables.addKeyListener('/SmartDashboard/Indexer', (key, value) => {
     } else {
         ui.indexerText.innerHTML = 'STOPPED';
         ui.indexerText.style.color = 'red';
+    }
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/TurnDirection', (key, value) => {
+    if(value == 0) {
+        ui.vision.degreeNumber.style.opacity = 0;
+        ui.vision.leftArrow.style.opacity = 0;
+        ui.vision.rightArrow.style.opacity = 0;
+
+    } else {
+        if(value > 0) {
+            ui.vision.rightArrow.style.opacity = 1;
+            ui.vision.leftArrow.style.opacity = 0;
+        } else {
+            ui.vision.rightArrow.style.opacity = 0;
+            ui.vision.leftArrow.style.opacity = 1;
+        }
+        ui.vision.degreeNumber.style.opacity = 1;
+        ui.vision.degreeNumber.innerHTML = Math.abs(value) + 'º';
     }
 });
 
