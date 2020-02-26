@@ -64,7 +64,8 @@ public class RunTurretVision extends Command {
         //  7. instantaneous FPS
         visionResults = SmartDashboard.getNumberArray("Vision/result", new double[] {0, 0});
         if (visionResults[1] == 0) {
-            SmartDashboard.putString("Vision/valid_shot", "none");
+            Robot.turret.status = "none";
+            SmartDashboard.putString("Vision/valid_shot", Robot.turret.status);
             return;
         }
 
@@ -77,15 +78,18 @@ public class RunTurretVision extends Command {
         Robot.turret.setVerticalAngle(verticalAngle);
 
         if (Robot.turret.atHorizontalAngle(horizontalAngle) && Robot.turret.atVerticalAngle(verticalAngle)) {
-            if (alignmentAngle < ALIGNMENT_RANGE_INNER) {
-                SmartDashboard.putString("Vision/valid_shot", "inner");
-            } else if (alignmentAngle < ALIGNMENT_RANGE_OUTER) {
-                SmartDashboard.putString("Vision/valid_shot", "outer");
-            } else {
-                SmartDashboard.putString("Vision/valid_shot", "locked but none");
-            }
+            // if (alignmentAngle < ALIGNMENT_RANGE_INNER) {
+            //     SmartDashboard.putString("Vision/valid_shot", "inner");
+            // } else if (alignmentAngle < ALIGNMENT_RANGE_OUTER) {
+            //     SmartDashboard.putString("Vision/valid_shot", "outer");
+            // } else {
+            //     SmartDashboard.putString("Vision/valid_shot", "locked but none");
+            // }
+            Robot.turret.status = "locked";
+            SmartDashboard.putString("Vision/valid_shot", Robot.turret.status);
         } else {
-            SmartDashboard.putString("Vision/valid_shot", "homing but none");
+            Robot.turret.status = "homing";
+            SmartDashboard.putString("Vision/valid_shot", Robot.turret.status);
         }
     }
 
@@ -98,7 +102,8 @@ public class RunTurretVision extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.turret.stopHorizontal();
+        Robot.turret.setHorizontalAngleAbsolute(0);
+        SmartDashboard.putBoolean("Vision/error", false);
     }
 
     // Called when another command which requires one or more of the same
