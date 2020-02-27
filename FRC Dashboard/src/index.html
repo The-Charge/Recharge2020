@@ -59,8 +59,8 @@
         <div id="elevation">
             <div>
                 <input id="test-element-elevation" type="range" min="-100" max="100" value="0">
-                <div id="elevation-number" class="big-number" style="padding-top: 25px; margin-left: 15px;">0°</div>
-                <svg style="margin-left: 10px; padding-top: 110px">
+                <div id="elevation-number" class="big-number" style="padding-top: 25px; margin-left: 22px;">0°</div>
+                <svg style="margin-left: 22px; padding-top: 110px">
                     <rect class="filled" x=10 width="120" height="5"></rect>
                     <rect class="filled" id="turret-elevation" x=10 width="120" height="5" style="padding-left: 10px" transform="rotate(0, -60, 0)"></rect>
                 </svg>
@@ -69,9 +69,9 @@
 
         <div id="gyro">
             <div>
-                <input id="test-element" type="number">
+                <input id="test-element" type="checkbox" value="true">
                 
-                <svg style="margin-left: 18px; padding-top: 50px">
+                <svg style="margin-left: 30px; padding-top: 50px">
                     <rect width="120" height="120"></rect>
                     <rect  class="filled" x="30" y="0" width="60" height="40"></rect>
                     <circle cx="60" cy="60" r="40"></circle>
@@ -88,23 +88,23 @@
                 <button id="connect-button">Connect</button>
                 <hr>
 
-                <div class="title-text" class="side-bar">Auton Select:</div>
+                <div class="title-text side-bar">Auton Select:</div>
                 <select id="auto-select" class="side-bar" style="width: 180px;">
                     <option>No auto modes found</option>
                     <!-- This gets populated by JS -->
                 </select>
                 <hr>
 
-                <div class="title-text" class="side-bar">Ball Count:</div>
-                <div class="big-number" id="ball-count" class="side-bar">3</div>
+                <div class="title-text side-bar">Ball Count:</div>
+                <div class="big-number" id="ball-count">3</div>
                 <hr>
                 
                 <!-- <div class="title-text">Control Panel:</div>
                 <div class="indicator" id="control-panel">NONE</div>
                 <hr> -->
 
-                <div class="title-text" class="side-bar">Indexer:</div>
-                <div id="indexer-text" class="on" class="indicator side-bar" style="font-size: 6vh; padding-left: 18px">RUNNING</div>
+                <div class="title-text side-bar">Indexer:</div>
+                <div id="indexer-text" class="on indicator side-bar" style="font-size: 6vh;">RUNNING</div>
                 <hr>
 
                 <div>
@@ -117,7 +117,7 @@
 
         <div id="driver-info">
             <div>
-                <div class="title-text", style="font-size: 7vh; text-align: left; margin-left: 65px; padding-top: 25px; display: inline-block">Gear: ​</div>
+                <div class="title-text", style="font-size: 7vh; text-align: left; margin-left: 85px; padding-top: 25px; display: inline-block">Gear: ​</div>
                 <div id="gear" class="on indicator", style="padding-bottom: 50px; text-align: right; display: inline-block; font-weight: bold;">HIGH</div>
             </div>
         </div>

@@ -34,6 +34,11 @@ text {
     stroke: var(--on);
     fill: var(--on);
 }
+.warning {
+    color: var(--warning);
+    stroke: var(--warning);
+    fill: var(--warning);
+}
 .filled {
     color: var(--main);
     stroke: var(--main);

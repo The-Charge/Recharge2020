@@ -4,7 +4,7 @@
     --shadow: #1c1c1c;
     --main: white;
     --on: lime;
-    --medium: yellow;
+    --warning: yellow;
     --off: red;
     --dull: #555;
     --text: rgb(200, 200, 200);
@@ -80,19 +80,6 @@ hr {
     87.5% {
         box-shadow: 3px 6px #9932cc;
     }
-    /* 100% {
-        box-shadow: 3px 6px #ff0000;
-    } */
-
-    /* 25% {
-        box-shadow: 3px 6px rgb(255, 255, 0);
-    }
-    50% {
-        box-shadow: 3px 6px rgb(255, 255, 0);
-    }
-    75% {
-        box-shadow: 3px 6px rgb(0, 118, 40);
-    } */
 }
 
 @keyframes camera-color {
@@ -117,19 +104,6 @@ hr {
     87.5% {
         box-shadow: 3px -6px #9932cc;
     }
-    /* 100% {
-        box-shadow: 3px -6px #ff0000;
-    } */
-
-    /* 25% {
-        box-shadow: 3px -6px rgb(255, 255, 0);
-    }
-    50% {
-        box-shadow: 3px -6px rgb(255, 255, 0);
-    }
-    75% {
-        box-shadow: 3px -6px rgb(0, 118, 40);
-    } */
 }
 
 .grid-container > div {
@@ -297,10 +271,10 @@ body.login #login {
 /* Other UI Elements */
 
 .side-bar {
-    padding-top: 5%;
-    /* padding-bottom: 5%; */
-    margin-top: 5%;
-    margin-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .guide-line {
@@ -319,8 +293,8 @@ body.login #login {
 }
 
 #vision-target-moving {
-    fill: var(--medium);
-    stroke: var(--medium);
+    fill: var(--warning);
+    stroke: var(--warning);
 }
 
 #vision-target-found {
@@ -333,18 +307,18 @@ body.login #login {
     top: 3px;
     left: 2px;
     padding-top: 10px;
-    padding-left: 18%;
+    padding-left: 12%;
     color: var(--shadow);
-    font-size: 10vh;
+    font-size: 12vh;
     font-family: sans-serif;
     font-weight: bold;
 }
 #team-number {
     position: absolute;
     padding-top: 10px;
-    padding-left: 18%;
+    padding-left: 12%;
     color: rgb(40, 140, 20);
-    font-size: 10vh;
+    font-size: 12vh;
     font-family: sans-serif;
     font-weight: bold;
 }

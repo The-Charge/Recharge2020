@@ -8,12 +8,6 @@ let ui = {
         status: document.getElementById('camera-status'),
     },
     gyro: {
-        // turret: {
-        //     val: 0,
-        //     offset: 0,
-        //     visualVal: 0,
-        // },
-        // container: document.getElementById('gyro'),
         turret: {
             marker: document.getElementById('turret-direction'),
             value: 0,
@@ -44,19 +38,15 @@ let ui = {
     ballCount: document.getElementById('ball-count'),
     testInput: document.getElementById('test-element'),
     panelText: document.getElementById('control-panel'),
-
-    test: document.getElementById('test-element'),
 };
+
+// var currentCamera;
+var currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
 
 // Update camera every second
 setInterval(() => {
-    ui.camera.screen.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
-}, 1000);
-
-setInterval(() => {
-    ui.gyro.turret.value += 1;
-    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + ui.gyro.turret.value + ',0,30)');
-}, 1)
+    ui.camera.screen.style.backgroundImage = currentCamera;
+}, 500);
 
 ui.climber.slider.oninput = function() {
     NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
@@ -66,8 +56,15 @@ ui.elevation.slider.oninput = function() {
     NetworkTables.putValue('/SmartDashboard/Turret Elevation', parseInt(this.value));
 }
 
-ui.testInput.oninput = function() {
-    NetworkTables.putValue('/SmartDashboard/TurnDirection', parseInt(this.value));
+//Test code for switching the camera
+ui.testInput.onclick = function() {
+    if(ui.testInput.checked == true) {
+        // currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
+    } else {
+        // currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+    }
+
+    NetworkTables.putValue('/SmartDashboard/vision_error', ui.testInput.checked);
 }
 
 // Update match timer
@@ -84,9 +81,9 @@ addEventListener('error',(ev)=>{
 
 NetworkTables.addKeyListener('/SmartDashboard/current_camera', (key, value) => {
     if(value == true) {
-        ui.camera.screen.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
+        currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
     } else {
-        ui.camera.screen.style.backgroundImage = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+        currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
     }
 });
 
@@ -98,9 +95,15 @@ NetworkTables.addKeyListener('/SmartDashboard/vision_error', (key, value) => {
     if(value == true) {
         ui.vision.leftArrow.classList.add('on');
         ui.vision.rightArrow.classList.add('on');
+        ui.vision.leftArrow.classList.remove('off');
+        ui.vision.rightArrow.classList.remove('off');
+        ui.vision.degreeNumber.style.fill = black;
     } else {
         ui.vision.leftArrow.classList.add('off');
         ui.vision.rightArrow.classList.add('off');
+        ui.vision.leftArrow.classList.remove('on');
+        ui.vision.rightArrow.classList.remove('on');
+        ui.vision.degreeNumber.style.fill = white;
     }
 });
 
@@ -149,20 +152,24 @@ NetworkTables.addKeyListener('/SmartDashboard/VisionFound', (key, value) => {
 NetworkTables.addKeyListener('/SmartDashboard/Gear', (key, value) => {
     if(value == true) {
         ui.gearText.innerHTML = 'HIGH';
-        ui.gearText.color = 'lime';
+        ui.gearText.classList.add(on);
+        ui.gearText.classList.remove(off);
     } else {
         ui.gearText.innerHTML = 'LOW';
-        ui.gearText.color = 'red';
+        ui.gearText.classList.add(off);
+        ui.gearText.classList.remove(on);
     }
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Indexer', (key, value) => {
     if(value == true) {
         ui.indexerText.innerHTML = 'RUNNING';
-        ui.indexerText.style.color = 'lime';
+        ui.indexerText.style.classList.add(on);
+        ui.indexerText.style.classList.remove(off);
     } else {
         ui.indexerText.innerHTML = 'STOPPED';
-        ui.indexerText.style.color = 'red';
+        ui.indexerText.style.classList.add(off);
+        ui.indexerText.style.classList.remove(on);
     }
 });
 
