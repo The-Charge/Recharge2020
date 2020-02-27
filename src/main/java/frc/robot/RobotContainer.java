@@ -220,20 +220,22 @@ public class RobotContainer {
 
     // An example trajectory to follow.  All units in meters.
 
-    //config.setReversed(true);
+    config.setReversed(true);
     
     
     Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
         // Start at the origin facing the +X direction
-        new Pose2d(0, 0, new Rotation2d(0)),
+        new Pose2d(2.723867910106207, -2.124089374707513+6, new Rotation2d(.9)),
         // Pass through these two interior waypoints, making an 's' curve path
         List.of(
-          new Translation2d(1, 1),
-          new Translation2d(2, -1)
+          //new Translation2d(0.414797278616654,-5.3165544523351125 + 6),
+          //new Translation2d(0.965825497494843,-4.555610721503329+6),
+          //new Translation2d(1.560586114696696,-3.7072021940242132 + 6),
+          //new Translation2d(2.225318569216417,-2.788821829227232 + 6)
           //new Translation2d(5, -1)
         ),
         // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(3, 0, new Rotation2d(0)),
+        new Pose2d(1.561, -3.707+6, new Rotation2d(.9)),
         // Pass config
         config
     );
