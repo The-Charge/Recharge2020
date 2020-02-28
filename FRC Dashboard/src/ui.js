@@ -36,6 +36,7 @@ let ui = {
     indexerText: document.getElementById('indexer-text'),
     autoSelect: document.getElementById('auto-select'),
     ballCount: document.getElementById('ball-count'),
+    turretSpeed: document.getElementById('turret-speed'),
     testInput: document.getElementById('test-element'),
     panelText: document.getElementById('control-panel'),
 };
@@ -158,6 +159,18 @@ NetworkTables.addKeyListener('/SmartDashboard/Gear', (key, value) => {
         ui.gearText.innerHTML = 'LOW';
         ui.gearText.classList.add(off);
         ui.gearText.classList.remove(on);
+    }
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/Turret Speed', (key, value) => {
+    if(value == true) {
+        ui.turretSpeed.innerHTML = "At Speed";
+        ui.turretSpeed.classList.add(on);
+        ui.turretSpeed.classList.remove(warning);
+    } else {
+        ui.turretSpeed.innerHTML = "Below Speed";
+        ui.turretSpeed.classList.add(warning);
+        ui.turretSpeed.classList.remove(on);
     }
 });
 
