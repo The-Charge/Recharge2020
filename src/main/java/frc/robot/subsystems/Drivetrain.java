@@ -9,14 +9,17 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.kauailabs.navx.frc.AHRS;
-
+import com.kauailabs.navx.frc.AHRS;
+import com.kauailabs.navx.frc.*;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.I2C.Port;
+//import edu.wpi.first.wpilibj.I2C.Port;
 //import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
@@ -26,28 +29,29 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.SerialPort.Port;
 
 
 import frc.robot.Constants.DriveConstants;
 
 public class Drivetrain extends SubsystemBase {
   // The motors on the left side of the drive.
-  public WPI_TalonSRX leftFrontMotor = new WPI_TalonSRX(DriveConstants.kLeftMotor1Port);
-  public WPI_TalonSRX rightFrontMotor = new WPI_TalonSRX(DriveConstants.kRightMotor1Port);
-
-  private  WPI_TalonSRX leftBackMotor = new WPI_TalonSRX(DriveConstants.kLeftMotor2Port);
-
-  private WPI_TalonSRX rightBackMotor = new WPI_TalonSRX(DriveConstants.kRightMotor2Port);
+  public WPI_TalonFX leftFrontMotor = new WPI_TalonFX(14);
+  public WPI_TalonFX leftMidMotor = new WPI_TalonFX(13);
+  private  WPI_TalonFX leftBackMotor = new WPI_TalonFX(15);
+  
+  public WPI_TalonFX rightFrontMotor = new WPI_TalonFX(2);
+  private WPI_TalonFX rightMidMotor = new WPI_TalonFX(1);
+  private WPI_TalonFX rightBackMotor = new WPI_TalonFX(3);
   
  
   private final SpeedControllerGroup m_leftMotors =
-      new SpeedControllerGroup(leftFrontMotor,
-                               leftBackMotor);
-
-  // The motors on the right side of the drive.
+  new SpeedControllerGroup(leftFrontMotor, leftMidMotor,
+                             leftBackMotor);
+  
   private final SpeedControllerGroup m_rightMotors =
-      new SpeedControllerGroup(rightFrontMotor,
-                            rightBackMotor);
+    new SpeedControllerGroup(rightFrontMotor, rightMidMotor,
+                          rightBackMotor);
                                
 
   // The robot's drive
@@ -66,7 +70,7 @@ public class Drivetrain extends SubsystemBase {
                 */
 
   // The gyro sensor
-      private final AHRS m_gyro = new AHRS(Port.kMXP);
+      private final AHRS m_gyro = new AHRS(Port.kUSB);
 
   // Odometry class for tracking robot pose
       public final DifferentialDriveOdometry m_odometry;
