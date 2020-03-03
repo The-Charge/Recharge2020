@@ -52,10 +52,10 @@ hr {
     height: 100vh;
     grid-template: repeat(5, minmax(0, 1fr)) / repeat(4, minmax(0, 1fr)));
     grid-template-areas:
-        "side vision vision timer timer driver driver"
-        "side vision vision climber cam1 cam1 cam1"
-        "side elevation gyro climber cam1 cam1 cam1"
-        "side elevation gyro climber cam1 cam1 cam1";
+        "side vision vision timer cam2 cam2"
+        "side vision vision climber cam2 cam2"
+        "side elevation gyro climber cam1 cam1"
+        "side elevation gyro climber cam1 cam1";
 }
 
 @keyframes color {
@@ -190,7 +190,7 @@ hr {
     grid-area: buttons;
 }
 
-#camera:before {
+#camera1:before {
     position: absolute;
     top: -50%;
     left: -50%;
@@ -198,14 +198,32 @@ hr {
     height: 200%;
     z-index: -1;
 }
-#camera {
+#camera1 {
     grid-area: cam1;
+    background: url("10.26.19.11:1181/stream.mjpg") 0 0 no-repeat;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transform: scaleX(-1);
     transform: scaleY(-1);
     /* -webkit-transform: "rotate(90)"; */
-    /* background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg") 0 0 no-repeat; */
+}
+
+#camera2:before {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+}
+#camera2 {
+    grid-area: cam2;
+    background: url("10.26.19.11:1182/stream.mjpg") 0 0 no-repeat;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+    /* -webkit-transform: "rotate(90)"; */
 }
 
 #camera-label {
@@ -271,10 +289,10 @@ body.login #login {
 /* Other UI Elements */
 
 .side-bar {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .guide-line {

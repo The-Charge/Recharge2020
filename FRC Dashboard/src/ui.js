@@ -2,11 +2,8 @@
 let ui = {
     timer: document.getElementById('timer'),
     robotState: document.getElementById('robot-state'),
-    camera: {
-        screen: document.getElementById('camera'),
-        label: document.getElementById('camera-label'),
-        status: document.getElementById('camera-status'),
-    },
+    camera1: document.getElementById('camera1'),
+    camera2: document.getElementById('camera2'),
     gyro: {
         turret: {
             marker: document.getElementById('turret-direction'),
@@ -41,13 +38,22 @@ let ui = {
     panelText: document.getElementById('control-panel'),
 };
 
-// var currentCamera;
-var currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
-
 // Update camera every second
 setInterval(() => {
-    ui.camera.screen.style.backgroundImage = currentCamera;
+    // TEST IMAGES:
+    // ui.camera1.style.backgroundImage = 'url("https://ww1.prweb.com/prfiles/2013/04/17/10642423/Team_33_Notre%20Dame_Prep_HS_Killer_Bees_FRC_2013.jpg")';
+    // ui.camera2.style.backgroundImage = 'url("https://media.team254.com/2017/03/8fcb07ae-misfire-400.jpg")';
+
+    // ACTUAL CAMERA URLs:
+    ui.camera1.style.backgroundImage = 'url("10.26.19.11:1181/stream.mjpg")';
+    ui.camera2.style.backgroundImage = 'url("10.26.19.11:1182/stream.mjpg")';
 }, 500);
+
+var rotation = 0;
+setInterval(() => {
+    rotation += 1;
+    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + rotation + ',0,38.5)');
+}, 1);
 
 ui.climber.slider.oninput = function() {
     NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
@@ -80,13 +86,13 @@ addEventListener('error',(ev)=>{
 
 //Event Listeners:
 
-NetworkTables.addKeyListener('/SmartDashboard/current_camera', (key, value) => {
-    if(value == true) {
-        currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
-    } else {
-        currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
-    }
-});
+// NetworkTables.addKeyListener('/SmartDashboard/current_camera', (key, value) => {
+//     if(value == true) {
+//         currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
+//     } else {
+//         currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+//     }
+// });
 
 NetworkTables.addKeyListener('/SmartDashboard/turret_rotation', (key, value) => {
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
