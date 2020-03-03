@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_robotContainer.m_robotDrive.resetEncoders();
     m_robotContainer.m_robotDrive.resetOdometry(new Pose2d(0, 0, new Rotation2d(0)));
-    m_autonomousCommand = new SequentialCommandGroup(m_robotContainer.getAutonomousCommand(), m_robotContainer.getAutonomousCommand2());
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     //m_robotContainer.m_robotDrive.setEncoders((int)(1/DriveConstants.kEncoderDistancePerPulse), -(int)(1/DriveConstants.kEncoderDistancePerPulse));
     //m_robotContainer.m_robotDrive.m_odometry.update(new Rotation2d(0) ,1 ,1);
 
