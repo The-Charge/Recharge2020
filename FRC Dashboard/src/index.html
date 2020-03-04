@@ -25,18 +25,20 @@
                 <div id="vision-target" style="padding-left: 65px;">FOUND</div>
                 
                 <!-- The Target -->
-                <svg style="margin-left: 220px; margin-top: -70px; height: 200px">
+                <svg style="margin-left: 220px; margin-top: -90px; height: 200px">
                     <circle id="vision-target-found" cx="120" cy="80" r="70"></circle>
                     <circle id="vision-target-moving" cx="120" cy="80" r="45"></circle>
                     <circle id="vision-target-none" cx="120" cy="80" r="20"></circle>
                 </svg>
-                <svg style="margin-top: -135px; margin-left: 30px">
+                <svg style="margin-top: -110px; margin-left: 30px">
                     <!-- The Arrows -->
                     <polygon points="60,90 20,50 60,10 60,30 140,30 140,70 60,70" class="off" id="left-arrow"/>
                     <polygon points="60,30 140,30 140,10 180,50 140,90 140,70 60,70" class="off" id="right-arrow"/>
                 </svg>
 
                 <div id="vision-degrees" class="big-number" style="margin-left: -190px; margin-top: -202px; font-family: sans-serif;">0º</div>
+
+                <button id="stopper-toggle" class="off" type="button" onclick="stopperToggle()" style="margin-left: 267px; width: 150px;">Stopper Closed</button>
             </div>
         </div>
 

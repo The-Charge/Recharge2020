@@ -34,8 +34,9 @@ let ui = {
     autoSelect: document.getElementById('auto-select'),
     ballCount: document.getElementById('ball-count'),
     turretSpeed: document.getElementById('turret-speed'),
-    testInput: document.getElementById('test-element'),
-    panelText: document.getElementById('control-panel'),
+    stopperButton: document.getElementById('stopper-toggle'),
+    // testInput: document.getElementById('test-element'),
+    // panelText: document.getElementById('control-panel'),
 };
 
 // Update camera every second
@@ -64,14 +65,35 @@ ui.elevation.slider.oninput = function() {
 }
 
 //Test code for switching the camera
-ui.testInput.onclick = function() {
-    if(ui.testInput.checked == true) {
-        // currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
-    } else {
-        // currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+// ui.testInput.onclick = function() {
+//     if(ui.testInput.checked == true) {
+//         // currentCamera = 'url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/BakedPotatoWithButter.jpg/1200px-BakedPotatoWithButter.jpg")';
+//     } else {
+//         // currentCamera = 'url(https://image.shutterstock.com/image-photo/young-potato-isolated-on-white-260nw-630239534.jpg)';
+//     }
+
+//     NetworkTables.putValue('/SmartDashboard/vision_error', ui.testInput.checked);
+// }
+
+var stopperOpen = true;
+// document.getElementById('stopper-toggle').onclick = () => {
+//     console.log('test');
+// };
+
+function stopperToggle() {
+    stopperOpen = !stopperOpen;
+    if(stopperOpen == false) {
+        ui.stopperButton.innerHTML = "Stopper Closed";
+        ui.stopperButton.classList.add('off');
+        ui.stopperButton.classList.remove('on');
+    }
+    else {
+        ui.stopperButton.innerHTML = "Stopper Open";
+        ui.stopperButton.classList.add('on');
+        ui.stopperButton.classList.remove('off');
     }
 
-    NetworkTables.putValue('/SmartDashboard/vision_error', ui.testInput.checked);
+    NetworkTables.putValue('/SmartDashboard/Stopper Toggle', stopperOpen);
 }
 
 // Update match timer
@@ -94,11 +116,11 @@ addEventListener('error',(ev)=>{
 //     }
 // });
 
-NetworkTables.addKeyListener('/SmartDashboard/turret_rotation', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Turret Rotation', (key, value) => { //FINAL NETWORKTABLE VALUE
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/vision_error', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Valid Turret Rotation', (key, value) => { //FINAL NETWORKTABLE VALUE
     if(value == true) {
         ui.vision.leftArrow.classList.add('on');
         ui.vision.rightArrow.classList.add('on');
@@ -119,7 +141,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Climber Elevation', (key, value) =
     ui.climber.top.style.cy = String(132 - parseInt(value));
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Turret Elevation', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Turret Elevation', (key, value) => { //FINAL NETWORKTABLE VALUE
     ui.elevation.arm.setAttribute('transform', 'rotate(-' + value + ',-60,0)');
     ui.elevation.number.innerHTML = value + '°';
 });
@@ -136,27 +158,46 @@ NetworkTables.addKeyListener('/SmartDashboard/Ball Count', (key, value) => {
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/VisionFound', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Vision Status', (key, value) => { //FINAL NETWORKTABLE VALUE
     //0 is none, 1 is moving, 2 is found
+    if(value == 'none' || 'disabled') {
+        value = 0;
+    } else if(value == 'homing') {
+        value = 1;
+    } else if(value == 'locked') {
+        value = 2;
+    } else {
+        value = -1;
+    }
+
     if(parseInt(value) == 0) {
         ui.vision.text.innerHTML = 'NONE';
         ui.vision.text.style.color = 'red';
+        ui.vision.none.style.opacity = 1;
         ui.vision.moving.style.opacity = 0;
         ui.vision.found.style.opacity = 0;
     } else if(parseInt(value) == 1) {
         ui.vision.text.innerHTML = 'MOVING';
         ui.vision.text.style.color = 'yellow';
+        ui.vision.none.style.opacity = 1;
         ui.vision.moving.style.opacity = 1;
         ui.vision.found.style.opacity = 0;
     } else if(parseInt(value) == 2) {
         ui.vision.text.innerHTML = 'FOUND';
         ui.vision.text.style.color = 'lime';
+        ui.vision.none.style.opacity = 1;
         ui.vision.moving.style.opacity = 1;
         ui.vision.found.style.opacity = 1;
+    } else if(parseInt(value) == -1) {
+        ui.vision.text.innerHTML = 'ERROR';
+        ui.vision.text.style.color = 'red';
+        ui.vision.none.style.opacity = 0;
+        ui.vision.moving.style.opacity = 0;
+        ui.vision.found.style.opacity = 0;
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Gear', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/High Gear', (key, value) => { //FINAL NETWORKTABLE VALUE
     if(value == true) {
         ui.gearText.innerHTML = 'HIGH';
         ui.gearText.classList.add(on);
@@ -192,7 +233,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Indexer', (key, value) => {
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/TurnDirection', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Angle Offset', (key, value) => { //FINAL NETWORKTABLE VALUE
     if(value == 0) {
         ui.vision.degreeNumber.style.opacity = 0;
         ui.vision.leftArrow.style.opacity = 0;
