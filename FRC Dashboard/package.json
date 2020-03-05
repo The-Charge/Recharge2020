@@ -25,6 +25,7 @@
     "electron-packager": "^10.1.1"
   },
   "dependencies": {
+    "electron-localshortcut": "^3.2.1",
     "wpilib-nt-client": "^1.7.1"
   }
 }

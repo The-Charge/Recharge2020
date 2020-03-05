@@ -4,12 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 const electron = require('electron');
 const wpilib_NT = require('wpilib-nt-client');
 const client = new wpilib_NT.Client();
-
 // The client will try to reconnect after 1 second
 client.setReconnectDelay(1000)
 
 /** Module to control application life. */
 const app = electron.app;
+const electronLocalshortcut = require('electron-localshortcut');
 
 /** Module to create native browser window.*/
 const BrowserWindow = electron.BrowserWindow;
@@ -133,6 +133,19 @@ function createWindow() {
     mainWindow.webContents.on('did-fail-load', () => {
         console.log('window failed load');
     });
+
+    electronLocalshortcut.register(mainWindow, '1', () => {
+        console.log('Preset 1');
+    });
+    electronLocalshortcut.register(mainWindow, '2', () => {
+        console.log('Preset 2');
+    });
+    electronLocalshortcut.register(mainWindow, '3', () => {
+        console.log('Preset 3');
+    });
+    electronLocalshortcut.register(mainWindow, '4', () => {
+        console.log('Preset 4');
+    });
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -162,3 +175,9 @@ app.on('activate', function () {
     // dock icon is clicked and there are no other windows open.
     if (mainWindow == null) createWindow();
 });
+
+// app.whenReady().then(() => {
+//     globalShortcut.register('A', () => {
+//         console.log('A is pressed')
+//     })
+// })
