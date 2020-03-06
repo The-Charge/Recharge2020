@@ -46,8 +46,8 @@ setInterval(() => {
     // ui.camera2.style.backgroundImage = 'url("https://media.team254.com/2017/03/8fcb07ae-misfire-400.jpg")';
 
     // ACTUAL CAMERA URLs:
-    ui.camera1.style.backgroundImage = 'url("10.26.19.11:1181/stream.mjpg")';
-    ui.camera2.style.backgroundImage = 'url("10.26.19.11:1182/stream.mjpg")';
+    ui.camera1.style.backgroundImage = 'url("http://10.26.19.11:1181/stream.mjpg")';
+    ui.camera2.style.backgroundImage = 'url("http://10.26.19.11:1182/stream.mjpg")';
 }, 500);
 
 var rotation = 0;
