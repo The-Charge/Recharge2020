@@ -50,19 +50,19 @@ setInterval(() => {
     ui.camera2.style.backgroundImage = 'url("http://10.26.19.11:1182/stream.mjpg")';
 }, 500);
 
-var rotation = 0;
-setInterval(() => {
-    rotation += 1;
-    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + rotation + ',0,38.5)');
-}, 1);
+// var rotation = 0;
+// setInterval(() => {
+//     rotation += 1;
+//     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + rotation + ',0,38.5)');
+// }, 1);
 
-ui.climber.slider.oninput = function() {
-    NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
-}
+// ui.climber.slider.oninput = function() {
+//     NetworkTables.putValue('/SmartDashboard/Climber Elevation', parseInt(this.value));
+// }
 
-ui.elevation.slider.oninput = function() {
-    NetworkTables.putValue('/SmartDashboard/Turret Elevation', parseInt(this.value));
-}
+// ui.elevation.slider.oninput = function() {
+//     NetworkTables.putValue('/SmartDashboard/Turret Elevation', parseInt(this.value));
+// }
 
 //Test code for switching the camera
 // ui.testInput.onclick = function() {
@@ -117,7 +117,7 @@ addEventListener('error',(ev)=>{
 // });
 
 NetworkTables.addKeyListener('/SmartDashboard/Turret Rotation', (key, value) => { //FINAL NETWORKTABLE VALUE
-    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,30)');
+    ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,38.5)');
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Valid Turret Rotation', (key, value) => { //FINAL NETWORKTABLE VALUE
@@ -209,7 +209,7 @@ NetworkTables.addKeyListener('/SmartDashboard/High Gear', (key, value) => { //FI
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Turret Speed', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/Shooter Speed', (key, value) => {
     if(value == true) {
         ui.turretSpeed.innerHTML = "At Speed";
         ui.turretSpeed.classList.add(on);
