@@ -120,7 +120,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Turret Rotation', (key, value) => 
     ui.gyro.turret.marker.setAttribute('transform', 'rotate(' + value + ',0,38.5)');
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Valid Turret Rotation', (key, value) => { //FINAL NETWORKTABLE VALUE
+NetworkTables.addKeyListener('/SmartDashboard/Turret Valid Angle Setpoint', (key, value) => { //FINAL NETWORKTABLE VALUE
     if(value == true) {
         ui.vision.leftArrow.classList.add('on');
         ui.vision.rightArrow.classList.add('on');
@@ -233,7 +233,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Indexer', (key, value) => {
     }
 });
 
-NetworkTables.addKeyListener('/SmartDashboard/Angle Offset', (key, value) => { //FINAL NETWORKTABLE VALUE
+NetworkTables.addKeyListener('/SmartDashboard/Turret Angle To Setpoint', (key, value) => { //FINAL NETWORKTABLE VALUE
     if(value == 0) {
         ui.vision.degreeNumber.style.opacity = 0;
         ui.vision.leftArrow.style.opacity = 0;
