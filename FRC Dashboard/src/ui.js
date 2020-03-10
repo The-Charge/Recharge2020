@@ -42,12 +42,12 @@ let ui = {
 // Update camera every second
 setInterval(() => {
     // TEST IMAGES:
-    // ui.camera1.style.backgroundImage = 'url("https://ww1.prweb.com/prfiles/2013/04/17/10642423/Team_33_Notre%20Dame_Prep_HS_Killer_Bees_FRC_2013.jpg")';
-    // ui.camera2.style.backgroundImage = 'url("https://media.team254.com/2017/03/8fcb07ae-misfire-400.jpg")';
+    ui.camera1.style.backgroundImage = 'url("https://ww1.prweb.com/prfiles/2013/04/17/10642423/Team_33_Notre%20Dame_Prep_HS_Killer_Bees_FRC_2013.jpg")';
+    ui.camera2.style.backgroundImage = 'url("https://media.team254.com/2017/03/8fcb07ae-misfire-400.jpg")';
 
     // ACTUAL CAMERA URLs:
-    ui.camera1.style.backgroundImage = 'url("http://10.26.19.11:1181/stream.mjpg")';
-    ui.camera2.style.backgroundImage = 'url("http://10.26.19.11:1182/stream.mjpg")';
+    // ui.camera1.style.backgroundImage = 'url("http://10.26.19.11:1181/stream.mjpg")';
+    // ui.camera2.style.backgroundImage = 'url("http://10.26.19.11:1182/stream.mjpg")';
 }, 500);
 
 // var rotation = 0;
@@ -143,7 +143,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Climber Elevation', (key, value) =
 
 NetworkTables.addKeyListener('/SmartDashboard/Turret Elevation', (key, value) => { //FINAL NETWORKTABLE VALUE
     ui.elevation.arm.setAttribute('transform', 'rotate(-' + value + ',-60,0)');
-    ui.elevation.number.innerHTML = value + '°';
+    ui.elevation.number.innerHTML = round(value) + '°';
 });
 
 NetworkTables.addKeyListener('/SmartDashboard/Ball Count', (key, value) => {

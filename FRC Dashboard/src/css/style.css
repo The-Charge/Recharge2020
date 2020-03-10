@@ -1,6 +1,6 @@
 :root {
-    --background: #333;
-    --dark-background: #222;
+    --background: #464646;
+    --dark-background: #2a2a2a;
     --shadow: #1c1c1c;
     --main: white;
     --on: lime;
@@ -109,7 +109,8 @@ hr {
 .grid-container > div {
     /* box-shadow: 3px 6px #ff0000; */
     /* box-shadow: 3px 6px #d4ab08; */
-    box-shadow: 3px 6px rgb(0, 118, 40);
+    /* box-shadow: 3px 6px rgb(0, 118, 40); */
+    box-shadow: 3px 6px var(--shadow);
     background-color: var(--background);
     /* animation-name: color; */
     animation-duration: 5s;
@@ -158,9 +159,10 @@ hr {
 
 #timer {
     font-family: monospace;
-    font-size: 17vh;
+    font-size: 6vw;
     grid-area: timer;
     text-align: center;
+    padding-top: 3vh;
 }
 
 #gyro {
@@ -190,41 +192,30 @@ hr {
     grid-area: buttons;
 }
 
-#camera1:before {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: -1;
-}
-#camera1 {
+#camera1-drop-shadow {
     grid-area: cam1;
+}
+
+#camera1 {
     background: url("10.26.19.11:1181/stream.mjpg") 0 0 no-repeat;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    /* NOTE: transform: scaleX(-1) doesn't flip the image */
     /*transform: scaleX(-1);*/
     transform: scaleY(-1);
-    transform: rotateZ(90);
-    /* -webkit-transform: "rotate(90)"; */
 }
 
-#camera2:before {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: -1;
-}
-#camera2 {
+#camera2-drop-shadow {
     grid-area: cam2;
+}
+
+#camera2 {
     background: url("10.26.19.11:1182/stream.mjpg") 0 0 no-repeat;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    transform: scaleX(-1);
-    transform: scaleY(-1);
-    /* -webkit-transform: "rotate(90)"; */
+    /* transform: scaleX(-1);
+    transform: scaleY(-1); */
+    transform: rotate(180deg);
 }
 
 #camera-label {
@@ -285,6 +276,10 @@ body.login #login {
 .indicator {
     font-size: 7vh;
     text-align: center;
+}
+
+#vision-degrees {
+    font-size: 8vh;
 }
 
 /* Other UI Elements */

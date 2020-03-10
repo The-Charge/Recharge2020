@@ -15,14 +15,18 @@
         </div>
 
         <!-- <div id="camera" style="box-shadow: 3px -6px #ff0000; animation-name: camera-color;"></div> -->
-        <div id="camera1" style="box-shadow: 3px -6px rgb(0, 118, 40);"></div>
-        <div id="camera2" style="box-shadow: 3px -6px rgb(0, 118, 40);"></div>
+        <div id="camera1-drop-shadow">
+            <div id="camera1"></div>
+        </div>
+        <div id="camera2-drop-shadow">
+            <div id="camera2"></div>
+        </div>
 
         <div id="vision">
             <div>
                 <!-- The Text -->
-                <div class="title-text" style="text-align: left; padding-left: 65px; padding-top: 35px;">Vision Target:</div>
-                <div id="vision-target" style="padding-left: 65px;">FOUND</div>
+                <div class="title-text" style="text-align: left; padding-left: 4vw; padding-top: 8vh;">Vision Target:</div>
+                <div id="vision-target" style="padding-left: 4vw;">FOUND</div>
                 
                 <!-- The Target -->
                 <svg style="margin-left: 220px; margin-top: -90px; height: 200px">
@@ -30,13 +34,13 @@
                     <circle id="vision-target-moving" cx="120" cy="80" r="45"></circle>
                     <circle id="vision-target-none" cx="120" cy="80" r="20"></circle>
                 </svg>
-                <svg style="margin-top: -110px; margin-left: 30px">
+                <svg style="margin-top: -110px; margin-left: 2.4vw">
                     <!-- The Arrows -->
                     <polygon points="60,90 20,50 60,10 60,30 140,30 140,70 60,70" class="off" id="left-arrow"/>
                     <polygon points="60,30 140,30 140,10 180,50 140,90 140,70 60,70" class="off" id="right-arrow"/>
                 </svg>
 
-                <div id="vision-degrees" class="big-number" style="margin-left: -190px; margin-top: -202px; font-family: sans-serif;">0º</div>
+                <div id="vision-degrees" class="big-number" style="margin-left: -12.5vw; margin-top: -43vh; font-family: sans-serif;">0º</div>
 
                 <button id="stopper-toggle" class="off" type="button" onclick="stopperToggle()" style="margin-left: 267px; width: 150px;">Stopper Closed</button>
             </div>
@@ -47,7 +51,7 @@
                 <div class="title-text">Climber Height:</div>
                 <hr>
                 <!-- <input id="test-element-climber" type="range" min="0" max="100" value="0"> -->
-                <svg>
+                <svg style="margin-top: 4vh;">
                     <line id="top-guide-line" class="guide-line stroke-off" x1="0" y1="32" x2="340" y2="32"></line>
                     <line id="bottom-guide-line" class="guide-line stroke-off" x1="0" y1="132" x2="340" y2="132"></line>
 
@@ -80,7 +84,7 @@
                 <hr>
                 <!-- <input id="test-element" type="checkbox" value="true"> -->
                 
-                <svg style="margin-left: 30px; padding-top: 20px">
+                <svg style="margin-left: 2.1vw; padding-top: 6vh">
                     <rect width="150" height="150"></rect>
                     <rect  class="filled" x="37" y="0" width="75" height="50"></rect>
                     <circle cx="75" cy="75" r="50"></circle>
