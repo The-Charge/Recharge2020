@@ -254,7 +254,7 @@ NetworkTables.addKeyListener('/SmartDashboard/Angle Offset', (key, value) => { /
 
 //UNTESTED:
 // Load list of prewritten autonomous modes
-NetworkTables.addKeyListener('/SmartDashboard/autonomous/modes', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/AutoSelect', (key, value) => { //FINAL NETWORKTABLE VALUE
     // Clear previous list
     while (ui.input.autoSelect.firstChild) {
         ui.input.autoSelect.removeChild(ui.input.autoSelect.firstChild);
